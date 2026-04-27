@@ -257,6 +257,336 @@
         border-radius: 18px;
       }
     }
+      .nav{
+        height:82px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        border-bottom:1px solid var(--border);
+        position:sticky;
+        top:0;
+        z-index:50;
+        width:100vw;
+        margin-left:calc(50% - 50vw);
+        padding-left:max(24px, calc((100vw - 1120px) / 2));
+        padding-right:max(24px, calc((100vw - 1120px) / 2));
+        background:rgba(11,15,26,.92);
+        backdrop-filter:blur(18px);
+        -webkit-backdrop-filter:blur(18px);
+      }
+
+      .brand{
+        letter-spacing:.2em;
+        font-weight:800;
+        font-size:18px;
+      }
+
+      .nav-links{
+        display:flex;
+        gap:22px;
+        color:var(--muted);
+        font-size:14px;
+      }
+
+      .nav-links a:hover{
+        color:white;
+      }
+
+      .back-nav{
+        margin:24px 0 8px;
+      }
+
+      .back-nav a{
+        font-size:14px;
+        color:var(--muted);
+        text-decoration:none;
+        display:inline-flex;
+        align-items:center;
+        gap:6px;
+        transition:.2s ease;
+      }
+
+      .back-nav a:hover{
+        color:white;
+        transform:translateX(-2px);
+      }
+
+      .case-section .back-nav a{
+        color:#64748B;
+      }
+
+      .case-section .back-nav a:hover{
+        color:#0F172A;
+      }
+
+      .case-summary{
+        padding:32px 0 72px;
+        border-top:0;
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        gap:16px;
+      }
+
+      .summary-card{
+        border:1px solid var(--border);
+        border-radius:22px;
+        background:rgba(255,255,255,.04);
+        padding:22px;
+        min-height:150px;
+      }
+
+      .summary-card span{
+        display:block;
+        color:var(--blue-2);
+        font-size:12px;
+        font-weight:800;
+        text-transform:uppercase;
+        letter-spacing:.08em;
+        margin-bottom:10px;
+      }
+
+      .summary-card p{
+        margin:0;
+        color:var(--muted);
+        font-size:15px;
+        line-height:1.55;
+      }
+
+      .case-section .case-summary{
+        padding:32px 0 72px;
+      }
+
+      .case-section .summary-card{
+        background:#FFFFFF;
+        border:1px solid rgba(11,15,26,.08);
+        box-shadow:0 14px 34px rgba(15,23,42,.05);
+      }
+
+      .case-section .summary-card span{
+        color:#2563EB;
+      }
+
+      .case-section .summary-card p{
+        color:#64748B;
+      }
+
+      .case-next-nav{
+        padding:56px 0;
+        border-top:1px solid var(--border);
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        gap:16px;
+      }
+
+      .case-next-card{
+        border:1px solid var(--border);
+        border-radius:24px;
+        background:rgba(255,255,255,.04);
+        padding:24px;
+        min-height:120px;
+        display:flex;
+        flex-direction:column;
+        justify-content:space-between;
+        transition:.2s ease;
+      }
+
+      .case-next-card:hover{
+        border-color:rgba(96,165,250,.35);
+        transform:translateY(-2px);
+      }
+
+      .case-next-card span{
+        color:var(--muted);
+        font-size:13px;
+        font-weight:800;
+        text-transform:uppercase;
+        letter-spacing:.08em;
+      }
+
+      .case-next-card strong{
+        color:white;
+        font-size:22px;
+        letter-spacing:-.02em;
+      }
+
+      .case-section .case-next-card{
+        background:#FFFFFF;
+        border:1px solid rgba(11,15,26,.08);
+        box-shadow:0 14px 34px rgba(15,23,42,.05);
+      }
+
+      .case-section .case-next-card strong{
+        color:#0F172A;
+      }
+
+      .case-section .case-next-card span{
+        color:#64748B;
+      }
+
+      .contact-footer{
+        padding:56px 0 34px;
+        border-top:1px solid var(--border);
+        display:grid;
+        grid-template-columns:1fr 1.2fr;
+        gap:32px;
+        align-items:start;
+      }
+
+      .contact-footer h2{
+        font-size:clamp(30px,4vw,46px);
+        margin:0 0 12px;
+      }
+
+      .contact-footer p{
+        font-size:16px;
+        max-width:480px;
+      }
+
+      .contact-links{
+        display:grid;
+        gap:12px;
+        justify-content:end;
+      }
+
+      .contact-link{
+        display:flex;
+        align-items:center;
+        gap:12px;
+        min-height:48px;
+        padding:12px 16px;
+        border-radius:999px;
+        border:1px solid var(--border);
+        background:rgba(255,255,255,.04);
+        color:#D4D4D8;
+        font-size:14px;
+        font-weight:700;
+        transition:.2s ease;
+      }
+
+      .contact-link:hover{
+        border-color:rgba(96,165,250,.35);
+        color:white;
+        transform:translateY(-1px);
+      }
+
+      .contact-icon{
+        width:28px;
+        height:28px;
+        border-radius:999px;
+        display:grid;
+        place-items:center;
+        background:linear-gradient(135deg,var(--blue),var(--purple));
+        color:white;
+        font-size:13px;
+        flex:0 0 28px;
+      }
+
+      .case-section .contact-footer{
+        border-top:1px solid rgba(11,15,26,.08);
+      }
+
+      .case-section .contact-link{
+        background:#FFFFFF;
+        border:1px solid rgba(11,15,26,.08);
+        color:#334155;
+        box-shadow:0 14px 34px rgba(15,23,42,.05);
+      }
+
+      .case-section .contact-link:hover{
+        color:#0F172A;
+        border-color:rgba(37,99,235,.25);
+      }
+
+      footer{
+        padding:24px 0 44px;
+        color:var(--muted);
+        display:flex;
+        justify-content:space-between;
+        border-top:1px solid rgba(255,255,255,.04);
+      }
+
+      .case-section + .page footer,
+      .case-section footer{
+        color:#64748B;
+        border-top:1px solid rgba(11,15,26,.08);
+      }
+
+      @media(max-width:980px){
+        .case-summary{
+          grid-template-columns:1fr;
+          padding:28px 0 56px;
+        }
+
+        .case-next-nav{
+          grid-template-columns:1fr;
+          padding:48px 0;
+        }
+
+        .contact-footer{
+          grid-template-columns:1fr;
+        }
+
+        .contact-links{
+          justify-content:stretch;
+        }
+
+        footer{
+          flex-direction:column;
+          gap:10px;
+        }
+      }
+
+      @media(max-width:520px){
+        .page{
+          width:calc(100% - 28px);
+        }
+
+        .nav{
+          height:72px;
+          padding-left:20px;
+          padding-right:20px;
+        }
+
+        .brand{
+          font-size:16px;
+        }
+
+        .nav-links{
+          gap:14px;
+          font-size:13px;
+        }
+
+        .back-nav{
+          margin:18px 0 4px;
+        }
+
+        .summary-card{
+          padding:20px;
+          min-height:auto;
+        }
+
+        .case-next-nav{
+          padding:44px 0;
+        }
+
+        .case-next-card{
+          min-height:100px;
+          padding:20px;
+        }
+
+        .case-next-card strong{
+          font-size:19px;
+        }
+
+        .contact-footer{
+          padding:44px 0 28px;
+        }
+
+        .contact-link{
+          border-radius:18px;
+          align-items:flex-start;
+        }
+      }
   </style>
 </head>
 <body>
@@ -269,6 +599,10 @@
         <a href="sobre.html">Sobre</a>
       </div>
     </nav>
+
+    <div class="back-nav">
+      <a href="index.html#cases">← Voltar para cases</a>
+    </div>
     <header class="hero">
       <div><span class="eyebrow">Case 02 · Design Estratégico · Fiocruz Brasília</span><h1>ADDIE-UX: redesenhando a esteira de produção EAD como sistema</h1><p class="lead">Um projeto em evolução para mapear, estruturar e redesenhar o ecossistema de produção de cursos EAD do NEAD, conectando UX, DesignOps, Design Instrucional e IA aplicada.</p><div class="tags"><span class="tag">Design Estratégico</span><span class="tag">Service Design</span><span class="tag">DesignOps</span><span class="tag">UX Research</span><span class="tag">IA aplicada</span></div></div>
       <div class="hero-visual">
@@ -294,6 +628,21 @@
         </div>
       </div>
     </header>
+
+    <section class="case-summary">
+      <div class="summary-card">
+        <span>Problema</span>
+        <p>Esteira de produção EAD complexa, com múltiplos atores, fluxos paralelos e baixa visibilidade entre etapas.</p>
+      </div>
+      <div class="summary-card">
+        <span>Solução</span>
+        <p>Mapeamento sistêmico da operação e estruturação do framework ADDIE-UX para conectar UX, DesignOps, Design Instrucional e IA.</p>
+      </div>
+      <div class="summary-card">
+        <span>Impacto</span>
+        <p>Maior clareza operacional, base para automação com IA e redução de retrabalho em processos educacionais complexos.</p>
+      </div>
+    </section>
     <section><div class="section-head"><div><span class="eyebrow">01 · Contexto</span><h2>A produção EAD como operação complexa</h2></div><p>A produção de cursos EAD no NEAD envolve equipes multidisciplinares, múltiplas etapas, validações sucessivas e demandas paralelas. O desafio não está apenas em produzir cursos, mas em coordenar um sistema de trabalho vivo.</p></div><div class="grid-4"><div class="card"><strong>Complexidade</strong><h3>Múltiplos atores</h3><p>DI, multimídia, TI, oferta, suporte, coordenação e conteudistas.</p></div><div class="card"><strong>Dependência</strong><h3>Validações em cadeia</h3><p>Cada entrega pode acionar novas rodadas de revisão e ajuste.</p></div><div class="card"><strong>Escala</strong><h3>Demandas paralelas</h3><p>Inscrições, AVA, BI, certificação, suporte e eventos.</p></div><div class="card"><strong>Experiência</strong><h3>Usuário interno</h3><p>O colaborador passa a ser entendido como usuário central do processo.</p></div></div></section>
     <section><div class="section-head"><div><span class="eyebrow">02 · Problema</span><h2>O problema não estava nas tarefas. Estava no sistema.</h2></div><p>O diagnóstico revelou que a esteira de produção não poderia ser tratada como fluxo único e linear. Havia macroprocesso visível e diversos microcosmos internos.</p></div><div class="grid-3"><div class="card"><strong>Gargalo</strong><h3>Informação descentralizada</h3><p>Parte do esforço era gasto reconstruindo contexto e decisões.</p></div><div class="card"><strong>Risco</strong><h3>Retrabalho estrutural</h3><p>Validações tardias e briefings incompletos geravam ciclos de ajuste.</p></div><div class="card"><strong>Consequência</strong><h3>Baixa visibilidade</h3><p>A equipe nem sempre tinha clareza de prioridades e dependências.</p></div></div></section>
     <section><div class="section-head"><div><span class="eyebrow">03 · Diagnóstico</span><h2>UX aplicado ao processo, não apenas ao produto final</h2></div><p>A pesquisa partiu da premissa de que a esteira de produção deveria ser analisada como um serviço, olhando para a experiência dos colaboradores que operam o processo.</p></div><div class="process-map"><div class="macro-flow"><div class="flow-step"><span>01</span><h4>Demanda</h4><p>Análise inicial, viabilidade e escopo.</p></div><div class="flow-step"><span>02</span><h4>Desenho</h4><p>Oficina, cronograma, roteiros e estrutura pedagógica.</p></div><div class="flow-step"><span>03</span><h4>Produção</h4><p>Storyboards, multimídia e materiais.</p></div><div class="flow-step"><span>04</span><h4>Implementação</h4><p>Configuração do AVA, atividades e testes.</p></div><div class="flow-step"><span>05</span><h4>Oferta</h4><p>Suporte, BI, avaliação e relatório.</p></div></div><div class="parallel-flows"><div>Inscrição e matrícula</div><div>Configuração do AVA</div><div>Suporte técnico</div><div>Relatórios e BI</div><div>Certificação</div><div>Multimídia</div><div>Acessibilidade</div><div>Eventos</div></div></div></section>
@@ -303,11 +652,22 @@
     <section><div class="section-head"><div><span class="eyebrow">07 · Sistema</span><h2>ADDIE-UX: estruturando um sistema complexo</h2></div><p>O framework atua como camada organizadora do processo existente, conectando estrutura, experiência e operação.</p></div><div class="addie-system"><div class="layers"><div class="layer"><span>ADDIE · Estrutura base</span><small>Análise, Desenho, Desenvolvimento, Implementação e Avaliação</small></div><div class="layer"><span>UX · Experiência do fluxo</span><small>Clareza, visibilidade e redução de carga cognitiva</small></div><div class="layer"><span>DesignOps · Operação</span><small>Briefings, rituais, checklists e documentação viva</small></div><div class="layer"><span>IA · Amplificação</span><small>Organização, análise e apoio a tarefas repetitivas</small></div></div><div class="addie-flow"><div>Análise</div><div>Desenho</div><div>Desenvolvimento</div><div>Implementação</div><div>Avaliação</div></div><div class="components"><div class="component-card"><strong>Briefing estruturado</strong><br><span>Reduz desalinhamento inicial.</span></div><div class="component-card"><strong>Checkpoints</strong><br><span>Evita validações tardias.</span></div><div class="component-card"><strong>Rituais</strong><br><span>Cria cadência entre áreas.</span></div><div class="component-card"><strong>Documentação viva</strong><br><span>Mantém contexto acessível.</span></div><div class="component-card"><strong>Agentes de IA</strong><br><span>Amplificam tarefas estruturadas.</span></div></div></div></section>
     <section><div class="section-head"><div><span class="eyebrow">08 · Agentes de IA</span><h2>IA como camada de apoio ao sistema</h2></div><p>Os agentes surgem como experimentações práticas para reduzir esforço, organizar informação e apoiar etapas específicas.</p></div><div class="agent-grid"><div class="agent"><h3>A.L.F.A</h3><p>Apoia leitura, análise e estruturação de documentos.</p></div><div class="agent"><h3>FioVoz</h3><p>Transforma conteúdo textual em áudio.</p></div><div class="agent"><h3>Audiodescrição</h3><p>Apoia descrição de elementos visuais com foco em acessibilidade.</p></div><div class="agent"><h3>D.I Digital</h3><p>Auxilia documentação e padronização instrucional.</p></div><div class="agent"><h3>Lattes Assistant</h3><p>Organiza informações acadêmicas.</p></div></div></section>
     <section><div class="quote"><span class="eyebrow">Aprendizado-chave</span><h2>Em sistemas complexos, design não é só melhorar a interface. É tornar o trabalho possível, visível e sustentável.</h2><p>O ADDIE-UX nasce dessa leitura: antes de escalar soluções, é preciso estruturar o sistema que sustenta a produção.</p></div></section>
+    <section class="case-next-nav">
+      <a class="case-next-card" href="ava.html">
+        <span>← Case anterior</span>
+        <strong>AVA da UCB</strong>
+      </a>
+      <a class="case-next-card" href="d2l.html">
+        <span>Próximo case</span>
+        <strong>D2L · Agente de IA →</strong>
+      </a>
+    </section>
+
     <section class="contact-footer" id="contato">
       <div>
         <span class="eyebrow">Contato</span>
-        <h2>Vamos conversar?</h2>
-
+        <h2>Disponível para oportunidades em UX/Product Design e sistemas com IA.</h2>
+        <p>Estou aberto a conversas sobre produtos digitais, educação, IA aplicada e design de sistemas complexos.</p>
       </div>
 
       <div class="contact-links">
@@ -328,7 +688,10 @@
       </div>
     </section>
 
-    <footer><span>Thalisson Cruz · UX/Product Designer</span><span>© 2026</span></footer>
+    <footer>
+      <span>Thalisson Cruz · UX/Product Designer</span>
+      <span>© 2026</span>
+    </footer>
   </div>
 </body>
 </html>
