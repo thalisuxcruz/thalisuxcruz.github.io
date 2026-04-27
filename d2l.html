@@ -421,12 +421,12 @@
           <span class="eyebrow">01 · Contexto</span>
           <h2>Uma operação acadêmica manual e crítica</h2>
         </div>
-        <p>Na Universidade Católica de Brasília (UCB), a criação de questionários no D2L não era feita via importação. Todo o processo era manual: a equipe recebia bancos de questões em arquivos Word ou PDF e precisava acessar cada sala virtual individualmente para cadastrar questão por questão dentro da plataforma.</p>
+        <p>Na Universidade Católica de Brasília (UCB), a criação de questionários no D2L Brightspace era feita manualmente. A equipe recebia bancos de questões em arquivos Word ou PDF e precisava acessar cada sala virtual para cadastrar questão por questão dentro da plataforma: enunciado, alternativas, gabarito, feedbacks e configurações.</p>
       </div>
       <div class="grid-4">
         <div class="card"><strong>Escala</strong><h3>+150 salas virtuais</h3><p>O processo precisava atender múltiplas disciplinas, turmas e ofertas simultâneas.</p></div>
-        <div class="card"><strong>Volume</strong><h3>40 a 80 questões</h3><p>Cada banco exigia formatação detalhada, repetitiva e altamente precisa.</p></div>
-        <div class="card"><strong>Risco</strong><h3>Sintaxe frágil</h3><p>Uma vírgula, aspa ou ID incorreto podia invalidar o arquivo inteiro.</p></div>
+        <div class="card"><strong>Volume</strong><h3>40 a 80 questões</h3><p>Cada banco exigia leitura, interpretação e cadastro individual dentro da plataforma.</p></div>
+        <div class="card"><strong>Risco</strong><h3>Erro manual em escala</h3><p>Falhas de cópia, marcação de alternativa, feedback ou configuração podiam comprometer a qualidade do questionário.</p></div>
         <div class="card"><strong>Operação</strong><h3>1 a 2 meses</h3><p>O ciclo completo consumia semanas de trabalho manual da equipe.</p></div>
       </div>
     </section>
@@ -437,11 +437,11 @@
           <span class="eyebrow">02 · Problema</span>
           <h2>Um fluxo 100% manual, repetitivo e não escalável</h2>
         </div>
-        <p>O fluxo exigia abrir sala por sala no D2L, copiar o enunciado do Word/PDF, criar alternativas, definir gabarito e inserir feedback manualmente. Esse processo precisava ser repetido dezenas de vezes por disciplina, tornando a operação lenta, cansativa e altamente propensa a erro humano.</p>
+        <p>O fluxo exigia abrir sala por sala no Brightspace, copiar o enunciado do Word/PDF, criar alternativas, marcar o gabarito, inserir feedbacks e revisar configurações manualmente. Esse processo precisava ser repetido dezenas de vezes por disciplina, tornando a operação lenta, cansativa e altamente propensa a erro humano.</p>
       </div>
       <div class="grid-3">
         <div class="card"><strong>Dor do time</strong><h3>Carga cognitiva alta</h3><p>A equipe precisava manter atenção constante em detalhes de sintaxe, pontuação e regras de negócio.</p></div>
-        <div class="card"><strong>Erro crítico</strong><h3>Falha em cascata</h3><p>Um pequeno erro podia comprometer todo o CSV e gerar depuração manual frustrante.</p></div>
+        <div class="card"><strong>Erro crítico</strong><h3>Falha de cadastro</h3><p>Um pequeno descuido ao copiar textos ou marcar opções comprometia a qualidade e gerava revisão manual frustrante.</p></div>
         <div class="card"><strong>Escala</strong><h3>Baixa sustentabilidade</h3><p>Novas disciplinas e atualizações aumentavam o volume sem aumentar a capacidade operacional.</p></div>
       </div>
     </section>
@@ -469,11 +469,11 @@
       </div>
       <div class="flow-board">
         <div class="flow">
-          <div class="flow-step"><span>01</span><h4>Entrada</h4><p>Questões chegam em Word, PDF ou formatos variados.</p></div>
-          <div class="flow-step"><span>02</span><h4>Leitura</h4><p>Equipe analisa manualmente enunciado, alternativas e gabarito.</p></div>
-          <div class="flow-step"><span>03</span><h4>Acesso ao D2L</h4><p>Abrir disciplina e navegar até o construtor de questionários.</p></div>
-          <div class="flow-step"><span>04</span><h4>Cadastro</h4><p>Criar questão manualmente: copiar, colar, ajustar e validar campos.</p></div>
-          <div class="flow-step"><span>05</span><h4>Repetição</h4><p>Processo repetido dezenas de vezes por banco e por disciplina.</p></div>
+          <div class="flow-step"><span>01</span><h4>Recebimento</h4><p>Questões chegavam em Word ou PDF.</p></div>
+          <div class="flow-step"><span>02</span><h4>Interpretação</h4><p>Equipe identificava enunciado, alternativas, gabarito e feedback.</p></div>
+          <div class="flow-step"><span>03</span><h4>Acesso à sala</h4><p>Cada disciplina precisava ser acessada individualmente no Brightspace.</p></div>
+          <div class="flow-step"><span>04</span><h4>Cadastro manual</h4><p>A questão era criada dentro da plataforma, campo por campo.</p></div>
+          <div class="flow-step"><span>05</span><h4>Repetição</h4><p>Processo repetido dezenas de vezes por banco e por sala.</p></div>
         </div>
       </div>
     </section>
@@ -484,11 +484,11 @@
           <span class="eyebrow">05 · Estratégia</span>
           <h2>Transformar prompt em agente especialista.</h2>
         </div>
-        <p>O trabalho não foi apenas “melhorar um prompt”. Foi criar uma arquitetura lógica capaz de ensinar a IA a executar a tarefa como um especialista: com regras, validação, consistência e processamento em lote.</p>
+        <p>A virada foi perceber que o problema não era apenas “cadastrar mais rápido”, mas transformar documentos não estruturados em uma base padronizada. A partir disso, o agente passou a interpretar os bancos recebidos em Word/PDF e gerar uma estrutura compatível com importação no D2L, reduzindo a dependência do cadastro manual no Brightspace.</p>
       </div>
       <div class="logic-system">
         <div class="logic-grid">
-          <div class="logic-card"><strong>Estrutura inflexível</strong><span>Formato CSV definido linha por linha, sem margem para variações de saída.</span></div>
+          <div class="logic-card"><strong>Estrutura inflexível</strong><span>O agente gera um arquivo CSV formatado estritamente linha por linha, sem margem para variações.</span></div>
           <div class="logic-card"><strong>Regra de negócio embutida</strong><span>IDs dinâmicos, siglas, unidades, aulas, tipo de questão e contadores sequenciais.</span></div>
           <div class="logic-card"><strong>Processamento em lote</strong><span>Capacidade de receber dezenas de questões e formatar o banco inteiro de uma vez.</span></div>
         </div>
@@ -515,8 +515,8 @@
       <div class="compare">
         <div class="panel before">
           <span class="pill red">Antes</span>
-          <h3>Cadastro manual no D2L (sala por sala)</h3>
-          <p>A equipe acessava cada disciplina, criava questões individualmente e replicava manualmente todo o conteúdo vindo do Word/PDF.</p>
+          <h3>Cadastro manual no Brightspace</h3>
+          <p>A equipe acessava cada sala, criava questões individualmente e replicava manualmente o conteúdo vindo do Word/PDF dentro da plataforma.</p>
           <div class="grid-2">
             <div class="card"><strong>Processo</strong><h3>Manual</h3><p>Criação direta na plataforma, sem automação.</p></div>
             <div class="card"><strong>Escala</strong><h3>Baixa</h3><p>Dependência total de esforço humano.</p></div>
@@ -524,8 +524,8 @@
         </div>
         <div class="panel after">
           <span class="pill green">Depois</span>
-          <h3>Batch, rápido e consistente</h3>
-          <p>O agente recebe as questões, interpreta regras, gera IDs e entrega um bloco CSV pronto para importação.</p>
+          <h3>Agente estruturando o banco para importação</h3>
+          <p>O agente interpreta as questões recebidas, aplica regras de estruturação e gera uma base padronizada para reduzir o cadastro manual.</p>
           <div class="grid-2">
             <div class="card"><strong>Tempo</strong><h3>Minutos</h3><p>Bancos inteiros formatados rapidamente.</p></div>
             <div class="card"><strong>Precisão</strong><h3>100%</h3><p>Erros de sintaxe manual eliminados.</p></div>
@@ -558,7 +558,7 @@
       </div>
       <div class="impact">
         <div class="card"><div class="number">&gt;95%</div><h3>Eficiência</h3><p>Ganho estimado de produtividade na tarefa específica.</p></div>
-        <div class="card"><div class="number">0%</div><h3>Erro de sintaxe</h3><p>Eliminação dos erros manuais de formatação CSV.</p></div>
+        <div class="card"><div class="number">0%</div><h3>Retrabalho no cadastro</h3><p>A importação em lote promovida pelo agente eliminou os erros do antigo registro manual.</p></div>
         <div class="card"><div class="number">&lt;5min</div><h3>40 questões</h3><p>Banco formatado em minutos, antes feito em horas.</p></div>
         <div class="card"><div class="number">+150</div><h3>Salas virtuais</h3><p>Operação preparada para escalar sem sobrecarga proporcional.</p></div>
       </div>
