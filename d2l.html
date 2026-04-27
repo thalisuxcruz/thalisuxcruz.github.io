@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>D2L · Formatador de Questões com IA — Thalisson Cruz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0B0F1A;
+      --surface: #111827;
+      --surface-2: #151D2E;
+      --border: rgba(255,255,255,0.08);
+      --text: #FFFFFF;
+      --muted: #A1A1AA;
+      --blue: #3B82F6;
+      --blue-2: #60A5FA;
+      --purple: #6D5DF6;
+      --green: #22C55E;
+      --orange: #F59E0B;
+      --red: #EF4444;
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      line-height: 1.45;
+    }
+    a { color: inherit; text-decoration: none; }
+    .page { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+
+    .nav {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(11,15,26,0.92);
+      backdrop-filter: blur(18px);
+    }
+    .brand { letter-spacing: .2em; font-weight: 800; font-size: 18px; }
+    .nav-links { display: flex; gap: 22px; color: var(--muted); font-size: 14px; }
+    .nav-links a:hover { color: white; }
+
+    h1, h2, h3, h4, p { margin-top: 0; }
+    h1 { font-size: clamp(48px, 7vw, 82px); line-height: .98; margin: 24px 0; letter-spacing: -0.06em; }
+    h2 { font-size: clamp(34px, 4vw, 56px); line-height: 1.04; margin: 0 0 18px; letter-spacing: -0.045em; }
+    h3 { margin: 0 0 10px; font-size: 22px; letter-spacing: -0.02em; }
+    p { color: var(--muted); font-size: 18px; }
+    .lead { font-size: 21px; max-width: 760px; }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      color: var(--blue-2);
+      border: 1px solid rgba(59,130,246,0.22);
+      background: rgba(59,130,246,0.08);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 26px 0 34px; }
+    .tag { color: #D4D4D8; border: 1px solid var(--border); padding: 8px 12px; border-radius: 999px; font-size: 13px; background: rgba(255,255,255,0.03); }
+
+    section { padding: 92px 0; border-top: 1px solid var(--border); }
+    .section-head { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; margin-bottom: 34px; }
+    .section-head p { max-width: 680px; }
+
+    .hero {
+      padding: 104px 0 84px;
+      display: grid;
+      grid-template-columns: 1fr .88fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .hero-visual {
+      min-height: 500px;
+      border-radius: 32px;
+      border: 1px solid var(--border);
+      background:
+        radial-gradient(circle at 25% 20%, rgba(96,165,250,.28), transparent 28%),
+        radial-gradient(circle at 80% 70%, rgba(109,93,246,.24), transparent 34%),
+        linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      position: relative;
+      overflow: hidden;
+      padding: 28px;
+      box-shadow: 0 30px 90px rgba(0,0,0,.35);
+    }
+
+    .code-window {
+      position: absolute;
+      inset: 34px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(2,6,23,.78);
+      box-shadow: 0 24px 80px rgba(0,0,0,.38);
+      overflow: hidden;
+    }
+    .code-top { height: 46px; border-bottom: 1px solid rgba(255,255,255,.08); display: flex; align-items: center; gap: 8px; padding: 0 18px; }
+    .dot { width: 10px; height: 10px; border-radius: 999px; background: rgba(255,255,255,.18); }
+    .dot:nth-child(1) { background: #EF4444; }
+    .dot:nth-child(2) { background: #F59E0B; }
+    .dot:nth-child(3) { background: #22C55E; }
+    .code-body { padding: 24px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 13px; color: #BFDBFE; line-height: 1.75; }
+    .code-body strong { color: #86EFAC; font-weight: 600; }
+    .code-body em { color: #A78BFA; font-style: normal; }
+    .agent-badge {
+      position: absolute;
+      right: 36px;
+      bottom: 36px;
+      width: 146px;
+      height: 146px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-weight: 900;
+      letter-spacing: -.03em;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      box-shadow: 0 0 80px rgba(96,165,250,.42);
+    }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: rgba(17,24,39,.74);
+      padding: 26px;
+      min-height: 190px;
+    }
+    .card p, .small { font-size: 15px; color: var(--muted); }
+    .card strong { color: var(--blue-2); font-size: 13px; text-transform: uppercase; letter-spacing: .08em; }
+
+    .quote {
+      background: linear-gradient(135deg, rgba(59,130,246,.14), rgba(109,93,246,.10));
+      border: 1px solid rgba(96,165,250,.18);
+      border-radius: 32px;
+      padding: 48px;
+    }
+    .quote h2 { color: white; }
+    .quote p { color: #D4D4D8; }
+
+    .flow-board {
+      border-radius: 30px;
+      padding: 26px;
+      border: 1px solid rgba(96,165,250,.16);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(59,130,246,.14), transparent 28%),
+        rgba(17,24,39,.56);
+      overflow: hidden;
+    }
+    .flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .flow-step {
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(11,15,26,.65);
+      border-radius: 18px;
+      padding: 18px;
+      min-height: 142px;
+      position: relative;
+    }
+    .flow-step::after {
+      content: "→";
+      position: absolute;
+      right: -12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255,255,255,.32);
+      font-weight: 800;
+    }
+    .flow-step:last-child::after { display: none; }
+    .flow-step span { color: var(--blue-2); font-weight: 800; font-size: 12px; }
+    .flow-step h4 { margin: 8px 0 6px; }
+    .flow-step p { font-size: 13px; margin: 0; }
+
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .panel {
+      border-radius: 28px;
+      padding: 26px;
+      border: 1px solid var(--border);
+      background: rgba(17,24,39,.62);
+    }
+    .panel.before { border-color: rgba(239,68,68,.2); background: linear-gradient(145deg, rgba(127,29,29,.18), rgba(17,24,39,.7)); }
+    .panel.after { border-color: rgba(34,197,94,.22); background: linear-gradient(145deg, rgba(20,83,45,.18), rgba(17,24,39,.7)); }
+    .pill { display: inline-flex; margin-bottom: 18px; padding: 8px 12px; border-radius: 999px; font-weight: 800; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+    .pill.red { background: rgba(239,68,68,.14); color: #FCA5A5; }
+    .pill.green { background: rgba(34,197,94,.14); color: #86EFAC; }
+
+    .logic-system {
+      border-radius: 34px;
+      padding: 32px;
+      border: 1px solid rgba(99,102,241,0.22);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(99,102,241,0.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(59,130,246,0.14), transparent 28%),
+        linear-gradient(145deg, rgba(15,23,42,0.92), rgba(2,6,23,0.96));
+      box-shadow: 0 30px 90px rgba(0,0,0,.35);
+    }
+    .logic-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 26px; }
+    .logic-card {
+      padding: 20px;
+      border-radius: 16px;
+      background: linear-gradient(145deg, rgba(15,23,42,0.9), rgba(2,6,23,0.9));
+      border: 1px solid rgba(99,102,241,0.2);
+      min-height: 150px;
+    }
+    .logic-card strong { display: block; color: white; margin-bottom: 8px; }
+    .logic-card span { color: var(--muted); font-size: 13px; }
+    .template {
+      margin-top: 28px;
+      padding: 24px;
+      border-radius: 20px;
+      background: rgba(2,6,23,.72);
+      border: 1px solid rgba(148,163,184,.16);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 13px;
+      color: #BFDBFE;
+      overflow: auto;
+      line-height: 1.75;
+    }
+    .template strong { color: #86EFAC; font-weight: 600; }
+    .template em { color: #A78BFA; font-style: normal; }
+
+    .impact { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .number { font-size: 42px; line-height: 1; font-weight: 900; color: #86EFAC; margin-bottom: 14px; }
+
+    .role-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+
+    footer { padding: 44px 0; border-top: 1px solid var(--border); color: var(--muted); display: flex; justify-content: space-between; }
+
+    @media (max-width: 980px) {
+      .hero, .section-head, .grid-2, .grid-3, .grid-4, .flow, .compare, .logic-grid, .impact, .role-grid { grid-template-columns: 1fr; }
+      .flow-step::after { display: none; }
+      .nav-links { display: none; }
+      .hero-visual { min-height: 390px; }
+      .agent-badge { width: 112px; height: 112px; right: 24px; bottom: 24px; }
+      h1 { font-size: 48px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav">
+      <a href="index.html" class="brand">CRUZ</a>
+      <div class="nav-links">
+        <a href="index.html#cases">Cases</a>
+        <a href="sobre.html">Sobre</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div>
+        <span class="eyebrow">Case 03 · IA aplicada · Universidade Católica de Brasília (UCB)</span>
+        <h1>Formatador D2L: de gargalo manual a agente especialista</h1>
+        <p class="lead">Criação colaborativa de um agente de IA para automatizar a formatação de bancos de questões da plataforma D2L Brightspace, reduzindo uma operação crítica de semanas para minutos.</p>
+        <div class="tags">
+          <span class="tag">IA aplicada</span>
+          <span class="tag">Prompt Engineering</span>
+          <span class="tag">DesignOps</span>
+          <span class="tag">D2L Brightspace</span>
+          <span class="tag">Automação acadêmica</span>
+        </div>
+      </div>
+      <div class="hero-visual" aria-label="Representação conceitual do agente Formatador D2L">
+        <div class="code-window">
+          <div class="code-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="code-body">
+            NewQuestion,<em>MC</em>,,,<br>
+            ID,<strong>GE-[Sigla]-UN-[##]-A[##]-QME-[##]</strong>,,,<br>
+            Difficulty,<em>[1-10]</em>,,,<br>
+            QuestionText,"<strong>[ID]</strong> [Enunciado completo]",,,<br>
+            Option,<em>100</em>,"[Alternativa correta]",,[Feedback]<br>
+            Option,<em>0</em>,"[Alternativa incorreta]",,[Feedback]<br>
+            Feedback,"[Explicação geral]",,,
+          </div>
+        </div>
+        <div class="agent-badge">D2L<br>Agent</div>
+      </div>
+    </header>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">01 · Contexto</span>
+          <h2>Uma operação acadêmica manual e crítica</h2>
+        </div>
+        <p>Na Universidade Católica de Brasília (UCB), a criação de questionários no D2L não era feita via importação. Todo o processo era manual: a equipe recebia bancos de questões em arquivos Word ou PDF e precisava acessar cada sala virtual individualmente para cadastrar questão por questão dentro da plataforma.</p>
+      </div>
+      <div class="grid-4">
+        <div class="card"><strong>Escala</strong><h3>+150 salas virtuais</h3><p>O processo precisava atender múltiplas disciplinas, turmas e ofertas simultâneas.</p></div>
+        <div class="card"><strong>Volume</strong><h3>40 a 80 questões</h3><p>Cada banco exigia formatação detalhada, repetitiva e altamente precisa.</p></div>
+        <div class="card"><strong>Risco</strong><h3>Sintaxe frágil</h3><p>Uma vírgula, aspa ou ID incorreto podia invalidar o arquivo inteiro.</p></div>
+        <div class="card"><strong>Operação</strong><h3>1 a 2 meses</h3><p>O ciclo completo consumia semanas de trabalho manual da equipe.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">02 · Problema</span>
+          <h2>Um fluxo 100% manual, repetitivo e não escalável</h2>
+        </div>
+        <p>O fluxo exigia abrir sala por sala no D2L, copiar o enunciado do Word/PDF, criar alternativas, definir gabarito e inserir feedback manualmente. Esse processo precisava ser repetido dezenas de vezes por disciplina, tornando a operação lenta, cansativa e altamente propensa a erro humano.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card"><strong>Dor do time</strong><h3>Carga cognitiva alta</h3><p>A equipe precisava manter atenção constante em detalhes de sintaxe, pontuação e regras de negócio.</p></div>
+        <div class="card"><strong>Erro crítico</strong><h3>Falha em cascata</h3><p>Um pequeno erro podia comprometer todo o CSV e gerar depuração manual frustrante.</p></div>
+        <div class="card"><strong>Escala</strong><h3>Baixa sustentabilidade</h3><p>Novas disciplinas e atualizações aumentavam o volume sem aumentar a capacidade operacional.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="quote">
+        <span class="eyebrow">03 · Origem da solução</span>
+        <h2>A inovação começou em uma conversa na copa.</h2>
+        <p>A solução não nasceu de um briefing formal. Ela surgiu no cotidiano da Coordenação de Ensino a Distância da UCB, em uma conversa informal com uma colega da equipe de TI sobre uma dor compartilhada: uma tarefa crítica, repetitiva e sensível a erro consumia semanas de trabalho.</p>
+        <p>As primeiras tentativas com IA eram promissoras, mas limitadas. Funcionavam para uma questão por vez, com inconsistência e baixa capacidade de escala. A virada aconteceu quando o problema deixou de ser visto como uma tarefa a automatizar e passou a ser entendido como um sistema de regras a estruturar.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">04 · Diagnóstico</span>
+          <h2>Do documento bruto ao cadastro manual</h2>
+        </div>
+        <p>Os questionários chegavam em formatos não estruturados. Cada questão continha enunciado, alternativas, gabarito e feedback — mas sem padronização técnica. A equipe precisava interpretar esse conteúdo e reconstruí-lo manualmente dentro do D2L.</p>
+      </div>
+      <div class="card">
+        <strong>Exemplo real de entrada</strong>
+        <p class="small">Arquivo recebido em Word/PDF com estrutura narrativa (enunciado, alternativas, gabarito e feedback), sem formatação compatível com o sistema.</p>
+      </div>
+      <div class="flow-board">
+        <div class="flow">
+          <div class="flow-step"><span>01</span><h4>Entrada</h4><p>Questões chegam em Word, PDF ou formatos variados.</p></div>
+          <div class="flow-step"><span>02</span><h4>Leitura</h4><p>Equipe analisa manualmente enunciado, alternativas e gabarito.</p></div>
+          <div class="flow-step"><span>03</span><h4>Acesso ao D2L</h4><p>Abrir disciplina e navegar até o construtor de questionários.</p></div>
+          <div class="flow-step"><span>04</span><h4>Cadastro</h4><p>Criar questão manualmente: copiar, colar, ajustar e validar campos.</p></div>
+          <div class="flow-step"><span>05</span><h4>Repetição</h4><p>Processo repetido dezenas de vezes por banco e por disciplina.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">05 · Estratégia</span>
+          <h2>Transformar prompt em agente especialista.</h2>
+        </div>
+        <p>O trabalho não foi apenas “melhorar um prompt”. Foi criar uma arquitetura lógica capaz de ensinar a IA a executar a tarefa como um especialista: com regras, validação, consistência e processamento em lote.</p>
+      </div>
+      <div class="logic-system">
+        <div class="logic-grid">
+          <div class="logic-card"><strong>Estrutura inflexível</strong><span>Formato CSV definido linha por linha, sem margem para variações de saída.</span></div>
+          <div class="logic-card"><strong>Regra de negócio embutida</strong><span>IDs dinâmicos, siglas, unidades, aulas, tipo de questão e contadores sequenciais.</span></div>
+          <div class="logic-card"><strong>Processamento em lote</strong><span>Capacidade de receber dezenas de questões e formatar o banco inteiro de uma vez.</span></div>
+        </div>
+        <div class="template">
+          NewQuestion,<em>MC</em>,,,<br>
+          ID,<strong>GE-[Sigla]-UN-[##]-A[##]-QME-[##]</strong>,,,<br>
+          Difficulty,<em>[1-10]</em>,,,<br>
+          QuestionText,"<strong>[ID]</strong> [Enunciado completo]",,,<br>
+          Option,<em>100</em>,"[Alternativa correta]",,[Feedback específico]<br>
+          Option,<em>0</em>,"[Alternativa incorreta]",,[Feedback específico]<br>
+          Feedback,"[Feedback geral da questão]",,,
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">06 · Antes vs Depois</span>
+          <h2>De fluxo manual frágil para sistema automatizado.</h2>
+        </div>
+        <p>A principal mudança não foi apenas acelerar a tarefa. Foi tornar o processo previsível, escalável e menos dependente de atenção manual extrema.</p>
+      </div>
+      <div class="compare">
+        <div class="panel before">
+          <span class="pill red">Antes</span>
+          <h3>Cadastro manual no D2L (sala por sala)</h3>
+          <p>A equipe acessava cada disciplina, criava questões individualmente e replicava manualmente todo o conteúdo vindo do Word/PDF.</p>
+          <div class="grid-2">
+            <div class="card"><strong>Processo</strong><h3>Manual</h3><p>Criação direta na plataforma, sem automação.</p></div>
+            <div class="card"><strong>Escala</strong><h3>Baixa</h3><p>Dependência total de esforço humano.</p></div>
+          </div>
+        </div>
+        <div class="panel after">
+          <span class="pill green">Depois</span>
+          <h3>Batch, rápido e consistente</h3>
+          <p>O agente recebe as questões, interpreta regras, gera IDs e entrega um bloco CSV pronto para importação.</p>
+          <div class="grid-2">
+            <div class="card"><strong>Tempo</strong><h3>Minutos</h3><p>Bancos inteiros formatados rapidamente.</p></div>
+            <div class="card"><strong>Precisão</strong><h3>100%</h3><p>Erros de sintaxe manual eliminados.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">07 · Inteligência condicional</span>
+          <h2>O agente passou a reconhecer inconsistências.</h2>
+        </div>
+        <p>A robustez apareceu quando o agente deixou de apenas executar comandos e passou a interpretar o contexto: identificar inconsistências na instrução, alertar sobre conflitos entre unidade e arquivo, e sugerir correções antes da formatação.</p>
+      </div>
+      <div class="quote">
+        <h2>O objetivo não era fazer a IA responder. Era fazer a IA operar com critério.</h2>
+        <p>Para Provas (PR) e Recuperações (REC), por exemplo, o agente aplica regras específicas de sincronização entre aula e numeração final, demonstrando adaptação às regras de negócio da D2L.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">08 · Impacto</span>
+          <h2>Meses para minutos. Erro manual para consistência.</h2>
+        </div>
+        <p>A solução gerou impacto imediato no fluxo de trabalho da equipe, liberando tempo para atividades de maior valor pedagógico e reduzindo a fragilidade operacional da importação de questões.</p>
+      </div>
+      <div class="impact">
+        <div class="card"><div class="number">&gt;95%</div><h3>Eficiência</h3><p>Ganho estimado de produtividade na tarefa específica.</p></div>
+        <div class="card"><div class="number">0%</div><h3>Erro de sintaxe</h3><p>Eliminação dos erros manuais de formatação CSV.</p></div>
+        <div class="card"><div class="number">&lt;5min</div><h3>40 questões</h3><p>Banco formatado em minutos, antes feito em horas.</p></div>
+        <div class="card"><div class="number">+150</div><h3>Salas virtuais</h3><p>Operação preparada para escalar sem sobrecarga proporcional.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">09 · Meu papel</span>
+          <h2>Da observação da dor à estruturação do agente.</h2>
+        </div>
+        <p>Minha contribuição esteve na leitura do problema como sistema, na engenharia de prompt avançada, na modelagem das regras, nos testes iterativos e na transformação da tentativa inicial em uma solução robusta e integrada ao fluxo da equipe.</p>
+      </div>
+      <div class="role-grid">
+        <div class="card"><strong>Diagnóstico</strong><h3>Mapeei a lógica</h3><p>Transformei regras implícitas em instruções explícitas para o agente.</p></div>
+        <div class="card"><strong>Construção</strong><h3>Iterei o prompt</h3><p>Testei, refinei e ampliei a capacidade do agente até alcançar consistência.</p></div>
+        <div class="card"><strong>Escala</strong><h3>Levei para lote</h3><p>O diferencial foi deixar de formatar uma questão por vez e processar bancos inteiros.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="quote">
+        <span class="eyebrow">Aprendizado-chave</span>
+        <h2>IA só gera valor quando entende o sistema que precisa operar.</h2>
+        <p>O maior aprendizado foi que automação não começa pela ferramenta. Começa pela leitura precisa da dor, pela colaboração entre áreas e pela transformação de regras de negócio em uma estrutura clara, testável e escalável.</p>
+      </div>
+    </section>
+
+    <footer>
+      <span>Thalisson Cruz · UX/Product Designer</span>
+      <span>© 2026</span>
+    </footer>
+  </div>
+</body>
+</html>
