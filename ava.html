@@ -4,39 +4,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CRUZ — Portfólio · Thalisson Cruz</title>
+  <title>THALISSON CRUZ — UX/Product Designer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
     rel="stylesheet">
   <style>
     :root {
       --bg: #0B0F1A;
       --surface: #111827;
       --surface-2: #151D2E;
-      --border: rgba(255, 255, 255, .08);
+      --surface-3: #F7F8FC;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-light: rgba(11, 15, 26, 0.08);
       --text: #FFFFFF;
+      --text-dark: #101423;
       --muted: #A1A1AA;
+      --muted-dark: #5E6472;
       --blue: #3B82F6;
       --blue-2: #60A5FA;
       --purple: #6D5DF6;
       --green: #22C55E;
+      --orange: #F59E0B;
+      --red: #EF4444;
+      --radius: 24px;
     }
 
     * {
-      box-sizing: border-box
+      box-sizing: border-box;
     }
 
     html {
-      scroll-behavior: smooth
+      scroll-behavior: smooth;
     }
 
     body {
       margin: 0;
-      background:
-        radial-gradient(circle at 18% 8%, rgba(59, 130, 246, .12), transparent 28%),
-        radial-gradient(circle at 82% 4%, rgba(109, 93, 246, .10), transparent 24%),
-        var(--bg);
+      background: var(--bg);
       color: var(--text);
       font-family: "Space Grotesk", system-ui, sans-serif;
       line-height: 1.45;
@@ -44,84 +48,55 @@
 
     a {
       color: inherit;
-      text-decoration: none
+      text-decoration: none;
     }
 
     .page {
       width: min(1120px, calc(100% - 40px));
-      margin: 0 auto
+      margin: 0 auto;
     }
 
-    .nav {
-      height: 82px;
-      display: flex;
+    .nav{
+      height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border-bottom:1px solid var(--border);
+      position:sticky;
+      top:0;
+      z-index:50;
+      width:100vw;
+      margin-left:calc(50% - 50vw);
+      padding-left:max(24px, calc((100vw - 1120px) / 2));
+      padding-right:max(24px, calc((100vw - 1120px) / 2));
+      background:rgba(11,15,26,.92);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+    }
+
+    .brand{
+      letter-spacing:.2em;
+      font-weight:800;
+      font-size:18px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:22px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .nav-links a:hover{
+      color:white;
+    }
+
+    .hero {
+      padding: 96px 0 80px;
+      display: grid;
+      grid-template-columns: 1fr .85fr;
+      gap: 56px;
       align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      width: 100vw;
-      margin-left: calc(50% - 50vw);
-      padding-left: max(24px, calc((100vw - 1120px) / 2));
-      padding-right: max(24px, calc((100vw - 1120px) / 2));
-      background: rgba(11, 15, 26, .92);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-    }
-
-    .brand {
-      letter-spacing: .2em;
-      font-weight: 800;
-      font-size: 18px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 22px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .nav-links a:hover {
-      color: white;
-    }
-
-    h1,
-    h2,
-    h3,
-    p {
-      margin-top: 0
-    }
-
-    h1 {
-      font-size: clamp(54px, 8vw, 96px);
-      line-height: .94;
-      margin: 24px 0;
-      letter-spacing: -.07em
-    }
-
-    h2 {
-      font-size: clamp(34px, 4vw, 58px);
-      line-height: 1.02;
-      margin: 0 0 18px;
-      letter-spacing: -.045em
-    }
-
-    h3 {
-      margin: 0 0 10px;
-      font-size: 24px;
-      letter-spacing: -.025em
-    }
-
-    p {
-      color: var(--muted);
-      font-size: 18px
-    }
-
-    .lead {
-      font-size: 22px;
-      max-width: 760px
     }
 
     .eyebrow {
@@ -129,341 +104,1610 @@
       gap: 8px;
       align-items: center;
       color: var(--blue-2);
-      border: 1px solid rgba(59, 130, 246, .22);
-      background: rgba(59, 130, 246, .08);
+      border: 1px solid rgba(59, 130, 246, 0.22);
+      background: rgba(59, 130, 246, 0.08);
       padding: 8px 12px;
       border-radius: 999px;
       font-size: 13px;
-      font-weight: 800;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: .08em;
     }
 
-    section {
-      padding: 96px 0;
-      border-top: 1px solid var(--border)
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
     }
 
-    .hero {
-      min-height: calc(100vh - 82px);
-      display: grid;
-      grid-template-columns: 1fr .82fr;
-      gap: 56px;
-      align-items: center;
-      padding: 88px 0;
+    h1 {
+      font-size: clamp(48px, 7vw, 86px);
+      line-height: .98;
+      margin: 24px 0;
+      letter-spacing: -0.06em;
     }
 
-    .hero-actions {
+    h2 {
+      font-size: clamp(34px, 4vw, 56px);
+      line-height: 1.04;
+      margin: 0 0 18px;
+      letter-spacing: -0.045em;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .lead {
+      font-size: 21px;
+      max-width: 680px;
+    }
+
+    .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 34px
+      gap: 10px;
+      margin: 26px 0 34px;
+    }
+
+    .tag {
+      color: #D4D4D8;
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .btns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 18px;
+      gap: 10px;
+      padding: 14px 18px;
       border-radius: 999px;
-      font-weight: 800;
-      font-size: 14px;
-      border: 1px solid var(--border);
+      font-weight: 700;
+      font-size: 15px;
     }
 
     .btn.primary {
-      background: linear-gradient(135deg, var(--blue), var(--purple));
-      border: 0;
+      background: var(--blue);
       color: white;
-      box-shadow: 0 14px 36px rgba(59, 130, 246, .28)
     }
 
     .btn.secondary {
-      color: #D4D4D8;
-      background: rgba(255, 255, 255, .04)
-    }
-
-    .hero-visual {
-      min-height: 520px;
-      border-radius: 34px;
       border: 1px solid var(--border);
-      background:
-        radial-gradient(circle at 18% 18%, rgba(96, 165, 250, .26), transparent 30%),
-        radial-gradient(circle at 78% 72%, rgba(109, 93, 246, .26), transparent 34%),
-        linear-gradient(135deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .02));
-      position: relative;
-      overflow: hidden;
-      padding: 34px;
-      box-shadow: 0 30px 90px rgba(0, 0, 0, .35);
-    }
-
-    .hero-visual::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px);
-      background-size: 34px 34px;
-      mask-image: radial-gradient(circle at center, black, transparent 78%);
-    }
-
-    .home-system-diagram {
-      position: relative;
-      z-index: 2;
-      height: 100%;
-      min-height: 452px;
-      border: 1px dashed rgba(96, 165, 250, .24);
-      border-radius: 28px;
-      padding: 28px;
-      display: grid;
-      grid-template-rows: auto 1fr;
-      gap: 26px;
-      align-items: center;
-    }
-
-    .home-system-core {
-      width: 156px;
-      height: 156px;
-      margin: 0 auto;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      color: white;
-      font-weight: 900;
-      font-size: 18px;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, var(--blue), var(--purple));
-      box-shadow: 0 0 90px rgba(96, 165, 250, .42);
-    }
-
-    .home-system-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-
-    .home-system-card {
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, .10);
-      background: rgba(11, 15, 26, .78);
-      backdrop-filter: blur(14px);
-      padding: 18px;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, .24);
-      min-height: 128px;
-    }
-
-    .home-system-card strong {
-      display: block;
-      font-size: 15px;
-      margin-bottom: 8px;
-      color: white;
-    }
-
-    .home-system-card span {
       color: var(--muted);
-      font-size: 13px;
-      line-height: 1.55;
+    }
+
+    section {
+      padding: 92px 0;
+      border-top: 1px solid var(--border);
     }
 
     .section-head {
       display: grid;
       grid-template-columns: .9fr 1.1fr;
       gap: 48px;
-      margin-bottom: 36px
+      margin-bottom: 34px;
     }
 
     .section-head p {
-      max-width: 700px
+      max-width: 640px;
     }
 
-    .case-grid {
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: rgba(17, 24, 39, .74);
+      padding: 26px;
+    }
+
+    .card p,
+    .small {
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px
+      gap: 18px;
     }
 
-    .case-card {
-      min-height: 520px;
-      border-radius: 30px;
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .hero-visual {
       border: 1px solid var(--border);
-      background: rgba(17, 24, 39, .72);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: .28s ease;
-    }
-
-    .case-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(96, 165, 250, .34);
-      box-shadow: 0 26px 80px rgba(0, 0, 0, .28)
-    }
-
-    .case-thumb {
-      height: 220px;
-      border-bottom: 1px solid var(--border);
+      border-radius: var(--radius);
+      min-height: 460px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(96, 165, 250, .32), transparent 26%),
+        radial-gradient(circle at 78% 72%, rgba(109, 93, 246, .25), transparent 30%),
+        linear-gradient(135deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .02));
       position: relative;
       overflow: hidden;
-      background: radial-gradient(circle at 20% 20%, rgba(96, 165, 250, .28), transparent 30%), linear-gradient(135deg, rgba(15, 23, 42, .92), rgba(2, 6, 23, .96));
+      padding: 30px;
     }
 
-    .case-thumb.fiocruz {
-      background: radial-gradient(circle at 22% 18%, rgba(109, 93, 246, .34), transparent 30%), radial-gradient(circle at 76% 74%, rgba(59, 130, 246, .22), transparent 34%), linear-gradient(135deg, rgba(15, 23, 42, .92), rgba(2, 6, 23, .96))
-    }
-
-    .case-thumb.d2l {
-      background: radial-gradient(circle at 22% 18%, rgba(34, 197, 94, .22), transparent 30%), radial-gradient(circle at 78% 72%, rgba(96, 165, 250, .26), transparent 34%), linear-gradient(135deg, rgba(15, 23, 42, .92), rgba(2, 6, 23, .96))
-    }
-
-    .mock-window {
+    .hero-visual .screen {
       position: absolute;
-      inset: 28px;
+      inset: 38px;
       border-radius: 20px;
-      background: rgba(2, 6, 23, .68);
-      border: 1px solid rgba(255, 255, 255, .12);
-      padding: 16px
+      border: 1px solid rgba(255, 255, 255, .10);
+      background: rgba(11, 15, 26, .72);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, .35);
+      padding: 26px;
+    }
+
+    .mini-top {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .18);
     }
 
     .line {
-      height: 10px;
-      border-radius: 999px;
+      height: 14px;
+      border-radius: 8px;
       background: rgba(255, 255, 255, .12);
-      margin-bottom: 10px
+      margin: 12px 0;
     }
 
-    .line.big {
-      height: 42px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, rgba(59, 130, 246, .58), rgba(109, 93, 246, .54))
+    .line.w80 {
+      width: 80%;
     }
 
-    .mini-grid {
+    .line.w60 {
+      width: 60%;
+    }
+
+    .line.w40 {
+      width: 40%;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .dashboard-grid div {
+      min-height: 74px;
+      border: 1px solid rgba(96, 165, 250, .18);
+      border-radius: 16px;
+      background: rgba(59, 130, 246, .08);
+    }
+
+    .case-card {
+      display: grid;
+      grid-template-columns: .72fr 1.28fr;
+      gap: 28px;
+      align-items: stretch;
+      padding: 22px;
+      border-radius: 28px;
+      border: 1px solid var(--border);
+      background: rgba(17, 24, 39, .62);
+    }
+
+    .case-thumb {
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(59, 130, 246, .26), rgba(109, 93, 246, .08));
+      border: 1px solid var(--border);
+      min-height: 260px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .case-thumb::before {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border-radius: 999px;
+      border: 1px dashed rgba(96, 165, 250, .28);
+    }
+
+    .case-thumb strong {
+      font-size: 58px;
+      letter-spacing: -0.08em;
+    }
+
+    .metric-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin-top: 14px
+      gap: 12px;
+      margin-top: 22px;
     }
 
-    .mini-grid span {
-      height: 44px;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, .08)
+    .metric {
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
     }
 
-    .case-body {
+    .metric strong {
+      display: block;
+      font-size: 20px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* AVA Case */
+    .case-section {
+      background: #F7F8FC;
+      color: var(--text-dark);
+      margin: 0 calc(50% - 50vw);
+      padding: 0 calc(50vw - 50%);
+      border-top: 0;
+    }
+
+    .case-section section {
+      border-color: rgba(11, 15, 26, .08);
+    }
+
+    .case-section p {
+      color: var(--muted-dark);
+    }
+
+    .case-section .eyebrow {
+      color: #2563EB;
+      background: rgba(59, 130, 246, .08);
+      border-color: rgba(59, 130, 246, .16);
+    }
+
+    .case-section .tag {
+      color: #334155;
+      background: white;
+      border: 1px solid rgba(11, 15, 26, .08);
+    }
+
+    .case-hero {
+      padding: 72px 0 56px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr);
+      gap: 48px;
+      align-items: center;
+    }
+
+    .case-hero h1 {
+      color: var(--text-dark);
+      font-size: clamp(42px, 5vw, 68px);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      max-width: 720px;
+    }
+
+    .case-hero p {
+      color: var(--muted-dark);
+    }
+
+    .case-hero .lead {
+      max-width: 640px;
+    }
+
+    .light-card {
+      border: 1px solid rgba(11, 15, 26, .08);
+      background: white;
+      border-radius: 22px;
       padding: 26px;
+      box-shadow: 0 18px 50px rgba(15, 23, 42, .06);
+    }
+
+    .light-card p {
+      font-size: 15px;
+    }
+
+    .ava-screen {
+      border-radius: 26px;
+      min-height: 430px;
+      background: linear-gradient(135deg, #FFFFFF, #EEF4FF);
+      border: 1px solid rgba(11, 15, 26, .08);
+      box-shadow: 0 24px 80px rgba(37, 99, 235, .15);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ava-header {
+      height: 58px;
+      border-radius: 16px;
+      background: #0B0F1A;
+      margin-bottom: 18px;
+    }
+
+    .ava-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .ava-content div {
+      min-height: 112px;
+      border-radius: 18px;
+      background: white;
+      border: 1px solid rgba(11, 15, 26, .08);
+    }
+
+    .ava-content div:nth-child(3) {
+      grid-column: span 2;
+      min-height: 90px;
+    }
+
+    .journey {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(210px, 1fr));
+      gap: 14px;
+      overflow-x: auto;
+      padding-bottom: 12px;
+    }
+
+    .journey .light-card {
+      min-height: 280px;
+    }
+
+    .journey-step {
+      color: #2563EB;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .emotion {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #0F172A;
+      font-weight: 700;
+      margin: 10px 0;
+    }
+
+    .friction {
       display: flex;
-      flex: 1;
-      flex-direction: column
+      gap: 4px;
+      margin: 16px 0 0;
     }
 
-    .case-meta {
-      color: var(--blue-2);
-      font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      margin-bottom: 12px
+    .bar {
+      height: 8px;
+      width: 22px;
+      border-radius: 999px;
+      background: #E2E8F0;
     }
 
-    .case-body p {
-      font-size: 15px
+    .bar.on {
+      background: #2563EB;
     }
 
-    .case-tags {
+    .ia-map {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .tree {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 14px;
+      line-height: 1.8;
+      white-space: pre-wrap;
+      color: #334155;
+      background: #F8FAFC;
+      border-radius: 18px;
+      border: 1px solid rgba(11, 15, 26, .08);
+      padding: 22px;
+      min-height: 440px;
+    }
+
+    .badges {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin: 18px 0 24px
+      gap: 10px;
+      margin-top: 18px;
     }
 
-    .case-tags span {
-      font-size: 12px;
-      color: #D4D4D8;
-      border: 1px solid var(--border);
+    .badge {
       border-radius: 999px;
-      padding: 6px 9px;
-      background: rgba(255, 255, 255, .03)
+      padding: 8px 12px;
+      font-size: 13px;
+      font-weight: 700;
     }
 
-    .case-link {
-      margin-top: auto;
-      color: white;
-      font-weight: 800
+    .badge.red {
+      background: rgba(239, 68, 68, .10);
+      color: #B91C1C;
     }
 
-    .principles {
+    .badge.green {
+      background: rgba(34, 197, 94, .12);
+      color: #15803D;
+    }
+
+    .decision-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
     }
 
-    .principle {
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 24px;
-      background: rgba(255, 255, 255, .035)
+    .decision-grid .light-card {
+      min-height: 230px;
     }
 
-    .principle strong {
-      color: var(--blue-2);
+    .decision-grid strong {
+      color: #2563EB;
       font-size: 13px;
       text-transform: uppercase;
-      letter-spacing: .08em
+      letter-spacing: .08em;
     }
 
-    .principle p {
-      font-size: 15px;
-      margin: 10px 0 0
+    .impact-light .number {
+      color: #2563EB;
     }
 
-    .about-strip {
+    .quote-light {
+      background: #0B0F1A;
+      color: white;
+      border-radius: 28px;
+      padding: 48px;
+    }
+
+    .quote-light p {
+      color: #D4D4D8;
+    }
+
+    .quote-light h2 {
+      color: white;
+    }
+
+    .evidence-layout {
       display: grid;
-      grid-template-columns: .85fr 1.15fr;
-      gap: 24px;
-      align-items: stretch
+      grid-template-columns: 1.1fr .9fr;
+      gap: 22px;
+      align-items: stretch;
     }
 
-    .portrait {
-      min-height: 360px;
-      border-radius: 30px;
-      border: 1px solid var(--border);
+    .finding-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .finding {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 16px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #FFF7F7, #FFFFFF);
+      border: 1px solid rgba(239, 68, 68, .16);
+      box-shadow: 0 10px 28px rgba(15, 23, 42, .04);
+    }
+
+    .finding-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: #FEE2E2;
+      color: #DC2626;
+      font-weight: 900;
+      font-size: 18px;
+    }
+
+    .finding strong {
+      display: block;
+      color: #0F172A;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .finding p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.45;
+      color: #64748B;
+    }
+
+    .real-screenshot,
+    .artifact-image {
+      border-radius: 22px;
+      border: 1px solid rgba(11, 15, 26, .08);
+      background: #FFFFFF;
       overflow: hidden;
-      position: relative
+      box-shadow: 0 18px 50px rgba(15, 23, 42, .06);
     }
 
-    .portrait img {
+    .real-screenshot img,
+    .artifact-image img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block
+      height: auto;
+      display: block;
+      object-fit: contain;
     }
 
-    .initials {
-      width: 170px;
-      height: 170px;
+    .artifact-caption {
+      margin-top: 12px;
+      color: #64748B;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .ava-real-ui {
+      padding: 18px;
+      background: #F8FAFC;
+      min-height: 440px;
+    }
+
+    .ava-real-top {
+      height: 34px;
+      background: #ffffff;
+      border: 1px solid rgba(11, 15, 26, .08);
+      border-radius: 10px 10px 0 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 12px;
+    }
+
+    .ava-real-bluebar {
+      height: 32px;
+      background: #0B4EA2;
+    }
+
+    .ava-real-banner {
+      height: 116px;
+      background: linear-gradient(90deg, #ef4444, #f59e0b, #22c55e, #3b82f6, #6d5df6);
+      display: flex;
+      align-items: end;
+      padding: 18px;
+      color: white;
+      font-size: 26px;
+      font-weight: 700;
+    }
+
+    .ava-real-body {
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 18px;
+      padding: 22px;
+      background: #F1F5F9;
+      border-radius: 0 0 18px 18px;
+    }
+
+    .ava-real-main,
+    .ava-real-side {
+      background: white;
+      border: 1px solid rgba(11, 15, 26, .08);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .ava-tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+      font-size: 12px;
+      color: #475569;
+    }
+
+    .ava-tabs span:nth-child(3) {
+      color: #1D4ED8;
+      border-bottom: 2px solid #1D4ED8;
+      padding-bottom: 4px;
+    }
+
+    .ava-course-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .ava-course-card {
+      border: 1px solid rgba(11, 15, 26, .08);
+      border-radius: 12px;
+      overflow: hidden;
+      background: white;
+      min-height: 132px;
+    }
+
+    .ava-course-img {
+      height: 48px;
+      background: linear-gradient(135deg, #22D3EE, #38BDF8);
+    }
+
+    .ava-course-title {
+      padding: 12px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #0F172A;
+    }
+
+    .ava-news {
+      margin-top: 14px;
+      border: 2px solid #EF4444;
+      border-radius: 16px;
+      padding: 14px;
+      color: #1D4ED8;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .ava-side-box {
+      height: 70px;
+      border: 1px solid rgba(11, 15, 26, .08);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      background: #F8FAFC;
+      padding: 12px;
+      font-size: 12px;
+      color: #334155;
+    }
+
+    .ava-side-box.tall {
+      height: 190px;
+    }
+
+    .case-artifact {
+      padding: 24px;
+      background: #F8FAFC;
+    }
+
+    .artifact-topline {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 22px;
+    }
+
+    .artifact-kicker {
+      color: #1D4ED8;
+      font-weight: 800;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 6px;
+    }
+
+    .artifact-title {
+      font-size: clamp(30px, 4vw, 52px);
+      color: #0F172A;
+      line-height: 1;
+      letter-spacing: -0.05em;
+      font-weight: 800;
+      margin: 0;
+    }
+
+    .artifact-subtitle {
+      max-width: 520px;
+      color: #64748B;
+      font-size: 15px;
+      text-align: right;
+    }
+
+    .artifact-comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .artifact-panel {
+      background: white;
+      border: 1px solid rgba(11, 15, 26, .08);
+      border-radius: 20px;
+      padding: 18px;
+      overflow: hidden;
+    }
+
+    .panel-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .panel-label.red {
+      color: #DC2626;
+      background: rgba(239, 68, 68, .10);
+    }
+
+    .panel-label.green {
+      color: #059669;
+      background: rgba(16, 185, 129, .10);
+    }
+
+    .old-ui,
+    .new-ui {
+      border: 1px solid rgba(11, 15, 26, .08);
+      border-radius: 16px;
+      min-height: 430px;
+      background: white;
+      overflow: hidden;
+    }
+
+    .old-ui-top {
+      height: 46px;
+      background: white;
+      border-bottom: 1px solid rgba(11, 15, 26, .08);
+    }
+
+    .old-ui-icons {
+      height: 62px;
+      display: flex;
+      gap: 26px;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 4px solid #0B4EA2;
+    }
+
+    .old-ui-icons span {
+      width: 32px;
+      height: 32px;
+      background: #DBEAFE;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .old-ui-icons span:nth-child(4)::after {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border: 3px solid #EF4444;
+      border-radius: 999px;
+    }
+
+    .old-ui-hero {
+      height: 92px;
+      background: linear-gradient(135deg, #0891B2, #22D3EE);
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      color: white;
+      font-size: 22px;
+    }
+
+    .old-ui-body {
+      display: grid;
+      grid-template-columns: 1fr 180px;
+      gap: 16px;
+      padding: 18px;
+      background: #F8FAFC;
+    }
+
+    .old-ui-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .old-tile {
+      min-height: 116px;
+      border: 1px solid rgba(11, 15, 26, .08);
+      border-radius: 12px;
+      background: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .old-tile::before {
+      content: "";
+      display: block;
+      height: 38px;
+      background: linear-gradient(135deg, #0891B2, #22D3EE);
+    }
+
+    .old-tile.highlight::after {
+      content: "";
+      position: absolute;
+      inset: -4px;
+      border: 3px solid #EF4444;
+      border-radius: 16px;
+    }
+
+    .old-side-card {
+      height: 118px;
+      border: 1px solid rgba(11, 15, 26, .08);
+      border-radius: 12px;
+      background: white;
+      margin-bottom: 12px;
+    }
+
+    .new-ui {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+    }
+
+    .new-sidebar {
+      background: #0B1E55;
+      padding: 18px 12px;
+      color: white;
+    }
+
+    .new-logo {
+      font-weight: 800;
+      margin-bottom: 28px;
+    }
+
+    .new-nav-item {
+      height: 34px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, .08);
+      margin-bottom: 10px;
+    }
+
+    .new-nav-item.active {
+      background: #1D4ED8;
+    }
+
+    .new-main {
+      background: #F8FAFC;
+      padding: 18px;
+    }
+
+    .new-search {
+      height: 38px;
+      width: 48%;
+      border-radius: 10px;
+      background: white;
+      border: 1px solid rgba(11, 15, 26, .08);
+      margin-bottom: 22px;
+    }
+
+    .new-title-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 14px;
+    }
+
+    .new-title-box {
+      height: 54px;
+      flex: 1;
+      border-radius: 12px;
+      background: white;
+      border: 1px solid rgba(11, 15, 26, .08);
+    }
+
+    .new-progress {
+      width: 160px;
+      border-radius: 12px;
+      background: white;
+      border: 1px solid rgba(11, 15, 26, .08);
+    }
+
+    .new-tabs {
+      height: 44px;
+      border-radius: 12px;
+      background: white;
+      border: 1px solid rgba(11, 15, 26, .08);
+      margin-bottom: 14px;
+    }
+
+    .new-card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .new-card {
+      min-height: 136px;
+      border-radius: 14px;
+      background: white;
+      border: 1px solid rgba(11, 15, 26, .08);
+    }
+
+    .artifact-decisions {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .artifact-decision {
+      background: white;
+      border: 1px solid rgba(11, 15, 26, .08);
+      border-radius: 18px;
+      padding: 18px;
+      text-align: center;
+      min-height: 132px;
+    }
+
+    .artifact-decision strong {
+      display: block;
+      color: #0B1E55;
+      margin-bottom: 8px;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    .artifact-decision p {
+      font-size: 12px;
+      margin: 0;
+      color: #64748B;
+    }
+
+    .impact-strip {
+      margin-top: 18px;
+      border-radius: 16px;
+      background: #0B1E55;
+      color: white;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      overflow: hidden;
+    }
+
+    .impact-strip div {
+      padding: 18px;
+      text-align: center;
+      background: rgba(255, 255, 255, .03);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .product-artifact {
+      padding: 26px;
+      background:
+        radial-gradient(circle at 16% 0%, rgba(37, 99, 235, .10), transparent 30%),
+        #F8FAFC;
+      min-width: 980px;
+    }
+
+    .product-comparison {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .product-panel {
+      background: #FFFFFF;
+      border: 1px solid rgba(11, 15, 26, .08);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 18px 48px rgba(15, 23, 42, .06);
+      overflow: hidden;
+    }
+
+    .panel-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 800;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .status-pill.red {
+      color: #DC2626;
+      background: rgba(239, 68, 68, .10);
+    }
+
+    .status-pill.green {
+      color: #059669;
+      background: rgba(16, 185, 129, .10);
+    }
+
+    .panel-note {
+      color: #64748B;
+      font-size: 13px;
+    }
+
+    .browser-shell {
+      border: 1px solid rgba(11, 15, 26, .08);
+      border-radius: 18px;
+      overflow: hidden;
+      background: #FFFFFF;
+      width: 100%;
+    }
+
+    .browser-top {
+      height: 36px;
+      background: #FFFFFF;
+      border-bottom: 1px solid rgba(11, 15, 26, .08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+    }
+
+    .browser-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .browser-dots span {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #CBD5E1;
+    }
+
+    .browser-icons {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .browser-icons span {
+      width: 16px;
+      height: 16px;
+      border-radius: 5px;
+      border: 1px solid #CBD5E1;
+    }
+
+    .profile-mini {
+      width: 24px !important;
+      height: 24px !important;
+      border-radius: 999px !important;
+      background: #16A34A !important;
+      border: 0 !important;
+    }
+
+    .legacy-nav {
+      height: 32px;
+      background: #0B4EA2;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 0 18px;
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .legacy-banner {
+      height: 118px;
+      background: linear-gradient(90deg, #EF4444, #F59E0B, #22C55E, #3B82F6, #6D5DF6);
+      display: flex;
+      align-items: flex-end;
+      padding: 18px;
+      color: white;
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .legacy-body {
+      display: grid;
+      grid-template-columns: 1fr 240px;
+      gap: 18px;
+      background: #F1F5F9;
+      padding: 18px;
+    }
+
+    .legacy-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(11, 15, 26, .08);
+      border-radius: 14px;
+      padding: 14px;
+      position: relative;
+    }
+
+    .legacy-tabs {
+      display: flex;
+      gap: 12px;
+      color: #64748B;
+      font-size: 11px;
+      margin-bottom: 14px;
+    }
+
+    .legacy-tabs span:nth-child(3) {
+      color: #1D4ED8;
+      border-bottom: 2px solid #1D4ED8;
+      padding-bottom: 5px;
+    }
+
+    .legacy-courses {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .legacy-course {
+      min-height: 150px;
+      border: 1px solid rgba(11, 15, 26, .08);
+      border-radius: 10px;
+      overflow: hidden;
+      background: white;
+    }
+
+    .legacy-course::before {
+      content: "";
+      display: block;
+      height: 66px;
+      background: linear-gradient(135deg, #22D3EE, #38BDF8);
+    }
+
+    .legacy-course p {
+      padding: 12px;
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.35;
+      color: #0F172A;
+      font-weight: 700;
+    }
+
+    .legacy-side {
+      display: grid;
+      gap: 12px;
+    }
+
+    .legacy-side-box {
+      min-height: 72px;
+      background: white;
+      border: 1px solid rgba(11, 15, 26, .08);
+      border-radius: 12px;
+      padding: 12px;
+      color: #334155;
+      font-size: 12px;
+    }
+
+    .legacy-news {
+      min-height: 156px;
+      border: 3px solid #EF4444;
+      border-radius: 18px;
+      padding: 16px;
+      color: #1D4ED8;
+      font-size: 20px;
+      line-height: 1.18;
+      font-weight: 800;
+      background: white;
+    }
+
+    .problem-callouts {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .problem-callout {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 10px;
+      align-items: start;
+      padding: 12px;
+      border-radius: 14px;
+      background: #FFF7F7;
+      border: 1px solid rgba(239, 68, 68, .12);
+    }
+
+    .problem-callout strong {
+      color: #991B1B;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .problem-callout p {
+      margin: 2px 0 0;
+      font-size: 12px;
+      color: #64748B;
+    }
+
+    .problem-dot {
+      width: 28px;
+      height: 28px;
       border-radius: 999px;
       display: grid;
       place-items: center;
+      background: #FEE2E2;
+      color: #DC2626;
       font-weight: 900;
-      font-size: 42px;
-      background: linear-gradient(135deg, var(--blue), var(--purple));
-      box-shadow: 0 0 90px rgba(96, 165, 250, .34)
     }
 
-    .about-card {
-      border: 1px solid var(--border);
-      border-radius: 30px;
-      background: rgba(17, 24, 39, .72);
-      padding: 34px
+    .modern-ui {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      min-height: 640px;
+      border: 1px solid rgba(11, 15, 26, .08);
+      border-radius: 18px;
+      overflow: hidden;
+      background: #F8FAFC;
     }
 
-    .about-card p {
-      font-size: 17px
+    .modern-sidebar {
+      background: linear-gradient(180deg, #0B1E55, #122B6F);
+      color: white;
+      padding: 18px 12px;
+    }
+
+    .modern-logo {
+      font-weight: 900;
+      font-size: 17px;
+      margin-bottom: 28px;
+    }
+
+    .modern-nav {
+      display: grid;
+      gap: 8px;
+    }
+
+    .modern-nav span {
+      height: 34px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      color: rgba(255, 255, 255, .76);
+      font-size: 12px;
+    }
+
+    .modern-nav span.active {
+      background: #1D4ED8;
+      color: white;
+      font-weight: 800;
+    }
+
+    .modern-content {
+      padding: 18px;
+    }
+
+    .modern-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+      align-items: center;
+    }
+
+    .search-box {
+      width: 46%;
+      height: 38px;
+      border-radius: 10px;
+      background: white;
+      border: 1px solid rgba(11, 15, 26, .08);
+      color: #94A3B8;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+    }
+
+    .user-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #0F172A;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: #0F172A;
+      color: white;
+      display: grid;
+      place-items: center;
+    }
+
+    .modern-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 18px;
+      margin-bottom: 14px;
+    }
+
+    .modern-title h4 {
+      margin: 0;
+      font-size: 20px;
+      color: #0F172A;
+    }
+
+    .modern-title p {
+      margin: 4px 0 0;
+      font-size: 12px;
+      color: #64748B;
+    }
+
+    .progress-inline {
+      width: 170px;
+    }
+
+    .progress-line {
+      height: 8px;
+      border-radius: 999px;
+      background: #E2E8F0;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+
+    .progress-line div {
+      height: 100%;
+      width: 65%;
+      background: #2563EB;
+      border-radius: 999px;
+    }
+
+    .modern-tabs {
+      display: flex;
+      gap: 16px;
+      background: white;
+      border: 1px solid rgba(11, 15, 26, .08);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 14px;
+      color: #475569;
+      font-size: 12px;
+    }
+
+    .modern-tabs span:first-child {
+      color: #2563EB;
+      font-weight: 900;
+    }
+
+    .modern-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+
+    .ux-card {
+      background: white;
+      border: 1px solid rgba(11, 15, 26, .08);
+      border-radius: 14px;
+      padding: 18px;
+      min-height: 178px;
+    }
+
+    .ux-card h5 {
+      margin: 0 0 12px;
+      color: #0F172A;
+      font-size: 14px;
+    }
+
+    .task {
+      display: flex;
+      gap: 10px;
+      padding: 10px 0;
+      border-top: 1px solid #EEF2F7;
+    }
+
+    .task-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      background: #DBEAFE;
+    }
+
+    .task p {
+      margin: 0;
+      color: #475569;
+      font-size: 11px;
+    }
+
+    .continue-box {
+      min-height: 74px;
+      background: #F8FAFC;
+      border-radius: 12px;
+      border: 1px solid #EEF2F7;
+      display: grid;
+      place-items: center;
+      color: #1D4ED8;
+      font-weight: 800;
+      font-size: 12px;
+    }
+
+    .summary-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .summary-mini {
+      background: white;
+      border: 1px solid rgba(11, 15, 26, .08);
+      border-radius: 12px;
+      padding: 12px;
+      color: #0F172A;
+      font-size: 12px;
+    }
+
+    .summary-mini strong {
+      display: block;
+      font-size: 20px;
+      color: #1D4ED8;
+    }
+
+    .ia-diagram {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .ia-box {
+      background: white;
+      border: 1px solid rgba(11, 15, 26, .08);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .ia-box h4 {
+      margin: 0 0 12px;
+      color: #0F172A;
+    }
+
+    .tree-flow {
+      display: grid;
+      place-items: center;
+      min-height: 150px;
+      color: #334155;
+      font-size: 12px;
+    }
+
+    .node-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .node {
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid #CBD5E1;
+      background: #F8FAFC;
+    }
+
+    .node.red {
+      border-color: #FCA5A5;
+      color: #991B1B;
+      background: #FEF2F2;
+    }
+
+    .node.green {
+      border-color: #86EFAC;
+      color: #166534;
+      background: #F0FDF4;
+    }
+
+    @media (max-width: 980px) {
+      .product-artifact {
+        min-width: 0;
+        overflow-x: auto;
+      }
+
+      .product-comparison,
+      .ia-diagram {
+        grid-template-columns: 1fr;
+      }
+
+      .artifact-comparison,
+      .artifact-decisions,
+      .impact-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .modern-ui {
+        grid-template-columns: 1fr;
+      }
+
+      .modern-sidebar {
+        min-height: auto;
+      }
+
+      .legacy-body {
+        display: grid;
+        grid-template-columns: 1fr 240px;
+        gap: 18px;
+        background: #F1F5F9;
+        padding: 18px;
+      }
+    }
+
+    .mock-card {
+      border: 1px solid rgba(11, 15, 26, .08);
+      border-radius: 14px;
+      background: #F8FAFC;
+      min-height: 90px;
+    }
+
+    .mock-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .mock-grid .mock-card {
+      min-height: 120px;
+    }
+
+    .mock-interface.after .mock-bar {
+      background: #0B0F1A;
+    }
+
+    .mock-interface.after .mock-body {
+      grid-template-columns: 220px 1fr;
+    }
+
+    .mock-side {
+      background: #111C44;
+      min-height: 360px;
+    }
+
+    .mock-main {
+      display: grid;
+      gap: 14px;
+    }
+
+    .eval-box {
+      border-radius: 24px;
+      padding: 28px;
+      background: linear-gradient(135deg, #EEF4FF, #FFFFFF);
+      border: 1px solid rgba(37, 99, 235, .14);
+    }
+
+    .eval-box h3 {
+      color: #1D4ED8;
+    }
+
+    @media (max-width: 980px) {
+
+      .evidence-layout,
+      .before-after-visual {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 40px;
+      align-items: start;
     }
 
     footer {
@@ -471,174 +1715,168 @@
       border-top: 1px solid var(--border);
       color: var(--muted);
       display: flex;
-      justify-content: space-between
-    }
-
-    .contact-footer {
-      padding: 56px 0 34px;
-      border-top: 1px solid var(--border);
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 32px;
-      align-items: start;
-    }
-
-    .contact-footer h2 {
-      font-size: clamp(30px, 4vw, 46px);
-      margin: 0 0 12px;
-    }
-
-    .contact-footer p {
-      font-size: 16px;
-      max-width: 480px;
-    }
-
-    .contact-links {
-      display: grid;
-      gap: 12px;
-      justify-content: end;
-    }
-
-    .contact-link {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-height: 48px;
-      padding: 12px 16px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, .04);
-      color: #D4D4D8;
-      font-size: 14px;
-      font-weight: 700;
-      transition: .2s ease;
-    }
-
-    .contact-link:hover {
-      border-color: rgba(96, 165, 250, .35);
-      color: white;
-      transform: translateY(-1px);
-    }
-
-    .contact-icon {
-      width: 28px;
-      height: 28px;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, var(--blue), var(--purple));
-      color: white;
-      font-size: 13px;
-      flex: 0 0 28px;
-    }
-
-    @media(max-width:980px) {
-
-      .hero,
-      .section-head,
-      .case-grid,
-      .principles,
-      .about-strip,
-      .contact-footer {
-        grid-template-columns: 1fr
-      }
-
-      .contact-links {
-        justify-content: stretch;
-      }
-
-      h1 {
-        font-size: 52px
-      }
-
-      .hero-visual {
-        min-height: 420px
-      }
-
-      .case-card {
-        min-height: auto
-      }
-
-      footer {
-        flex-direction: column;
-        gap: 10px
-      }
-    }
-
-    @media(max-width:520px) {
-      .page {
-        width: calc(100% - 28px);
-      }
-
-      .nav {
-        height: 72px;
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-
-      .brand {
-        font-size: 16px;
-      }
-
-      .nav-links {
-        gap: 14px;
-        font-size: 13px;
-      }
-
-      .contact-footer {
-        padding: 44px 0 28px;
-      }
-
-      .contact-link {
-        border-radius: 18px;
-        align-items: flex-start;
-      }
+      justify-content: space-between;
     }
 
     @media (max-width: 980px) {
-      .hero-visual {
-        min-height: auto;
-        padding: 28px;
-      }
 
-      .home-system-diagram {
-        min-height: auto;
-      }
-
-      .home-system-core {
-        width: 100%;
-        height: 88px;
-        border-radius: 22px;
-      }
-
-      .home-system-grid {
+      .hero,
+      .case-hero,
+      .section-head,
+      .case-card,
+      .ia-map,
+      .about {
         grid-template-columns: 1fr;
       }
 
-      .home-system-card {
-        min-height: auto;
+      .grid-3,
+      .grid-4,
+      .decision-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .metric-row {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 360px;
+      }
+
+      .case-section {
+        margin: 0 -20px;
+        padding: 0 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      h1 {
+        font-size: 52px;
+      }
+    }
+    .contact-footer{
+      padding:56px 0 34px;
+      border-top:1px solid var(--border);
+      display:grid;
+      grid-template-columns:1fr 1.2fr;
+      gap:32px;
+      align-items:start;
+    }
+
+    .contact-footer h2{
+      font-size:clamp(30px,4vw,46px);
+      margin:0 0 12px;
+    }
+
+    .contact-footer p{
+      font-size:16px;
+      max-width:480px;
+    }
+
+    .contact-links{
+      display:grid;
+      gap:12px;
+      justify-content:end;
+    }
+
+    .contact-link{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-height:48px;
+      padding:12px 16px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      color:#D4D4D8;
+      font-size:14px;
+      font-weight:700;
+      transition:.2s ease;
+    }
+
+    .contact-link:hover{
+      border-color:rgba(96,165,250,.35);
+      color:white;
+      transform:translateY(-1px);
+    }
+
+    .contact-icon{
+      width:28px;
+      height:28px;
+      border-radius:999px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,var(--blue),var(--purple));
+      color:white;
+      font-size:13px;
+      flex:0 0 28px;
+    }
+
+    @media(max-width:980px){
+      .contact-footer{
+        grid-template-columns:1fr;
+      }
+      .contact-links{
+        justify-content:stretch;
+      }
+      footer{
+        flex-direction:column;
+        gap:10px;
+      }
+    }
+
+    @media(max-width:520px){
+      .page{
+        width:calc(100% - 28px);
+      }
+      .nav{
+        height:72px;
+        padding-left:20px;
+        padding-right:20px;
+      }
+      .brand{
+        font-size:16px;
+      }
+      .nav-links{
+        gap:14px;
+        font-size:13px;
+      }
+      .contact-footer{
+        padding:44px 0 28px;
+      }
+      .contact-link{
+        border-radius:18px;
+        align-items:flex-start;
+      }
+    }
+    @media (max-width: 980px) {
+      .case-hero {
+        grid-template-columns: 1fr;
+        padding: 64px 0 48px;
+        gap: 36px;
+      }
+
+      .case-hero h1 {
+        font-size: clamp(40px, 8vw, 56px);
+        max-width: 100%;
       }
     }
 
     @media (max-width: 520px) {
-      .hero-visual {
-        padding: 20px;
-        border-radius: 24px;
+      .case-hero {
+        padding: 48px 0 40px;
       }
 
-      .home-system-diagram {
-        padding: 18px;
-        border-radius: 22px;
+      .case-hero h1 {
+        font-size: 36px;
+        line-height: 1;
+        letter-spacing: -0.045em;
       }
 
-      .home-system-core {
-        height: 76px;
+      .case-hero .lead {
         font-size: 16px;
-      }
-
-      .home-system-card {
-        padding: 16px;
-        border-radius: 18px;
       }
     }
   </style>
@@ -655,184 +1893,641 @@
       </div>
     </nav>
 
-    <header class="hero">
-      <div>
-        <span class="eyebrow">Thalisson Cruz · UX/Product Designer</span>
-        <h1>Design para sistemas complexos, educação digital e IA aplicada.</h1>
-        <p class="lead">Transformo fluxos confusos em experiências claras — conectando UX Research, arquitetura da
-          informação, design de interface, automação e pensamento sistêmico.</p>
-        <div class="hero-actions">
-          <a href="#cases" class="btn primary">Ver cases</a>
-          <a href="sobre.html" class="btn secondary">Sobre mim</a>
-        </div>
-      </div>
-
-      <div class="hero-visual" aria-label="Visual conceitual do portfólio CRUZ">
-        <div class="home-system-diagram">
-          <div class="home-system-core">UX<br>+ IA</div>
-
-          <div class="home-system-grid">
-            <div class="home-system-card">
-              <strong>Produto</strong>
-              <span>Redesign, arquitetura e experiência</span>
-            </div>
-
-            <div class="home-system-card">
-              <strong>Sistemas</strong>
-              <span>Fluxos, operações e service design</span>
-            </div>
-
-            <div class="home-system-card">
-              <strong>Automação</strong>
-              <span>IA aplicada para reduzir fricção operacional</span>
+    <main class="case-section" id="ava">
+      <div class="page">
+        <header class="case-hero">
+          <div>
+            <span class="eyebrow">Case 01 · Product Design · Universidade Católica de Brasília (UCB)</span>
+            <h1>Redesign do AVA Brightspace da Universidade Católica de Brasília (UCB) para melhorar a experiência de
+              aprendizagem</h1>
+            <p class="lead">Reestruturei a experiência do ambiente virtual de aprendizagem para reduzir fricção na
+              navegação, melhorar o acesso à informação e apoiar alunos e professores em um contexto educacional
+              complexo.</p>
+            <div class="tags">
+              <span class="tag">UX Research</span>
+              <span class="tag">Arquitetura da Informação</span>
+              <span class="tag">UI Design</span>
+              <span class="tag">EAD</span>
             </div>
           </div>
-        </div>
-      </div>
-    </header>
+          <div class="ava-screen" aria-label="Representação visual do dashboard do AVA">
+            <div class="ava-header"></div>
+            <div class="ava-content">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </header>
 
-    <section id="cases">
-      <div class="section-head">
+        <section>
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">01 · O desafio</span>
+              <h2>O problema não era falta de funcionalidade. Era falta de estrutura.</h2>
+            </div>
+            <p>A experiência do AVA apresentava dificuldade de navegação, conteúdos dispersos, baixa previsibilidade
+              entre disciplinas e dependência recorrente de suporte para tarefas básicas.</p>
+          </div>
+          <div class="grid-4">
+            <div class="light-card">
+              <h3>Navegação confusa</h3>
+              <p>Alunos precisavam explorar múltiplas áreas para encontrar conteúdos e atividades.</p>
+            </div>
+            <div class="light-card">
+              <h3>Baixa previsibilidade</h3>
+              <p>Cada disciplina podia apresentar estrutura, nomenclatura e organização diferentes.</p>
+            </div>
+            <div class="light-card">
+              <h3>Suporte sobrecarregado</h3>
+              <p>Dúvidas recorrentes surgiam por falta de clareza no próprio fluxo.</p>
+            </div>
+            <div class="light-card">
+              <h3>Hierarquia fraca</h3>
+              <p>Informações importantes competiam com elementos secundários.</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">02 · Evidência inicial</span>
+              <h2>A avaliação preliminar mostrou que o problema era estrutural.</h2>
+            </div>
+            <p>Além da percepção dos usuários, o diagnóstico inicial da interface revelou problemas claros de
+              hierarquia, foco e organização da informação. O print real da visão do aluno evidencia que conteúdos
+              acadêmicos, comunicados institucionais, calendário e disciplinas competiam pelo mesmo espaço.</p>
+          </div>
+
+          <div class="evidence-layout">
+            <div>
+              <div class="real-screenshot"
+                aria-label="Representação visual recriada da visão do aluno no AVA da UCB antes da intervenção">
+                <div class="ava-real-ui">
+                  <div class="ava-real-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                  </div>
+                  <div class="ava-real-bluebar"></div>
+                  <div class="ava-real-banner">Bem-vind@ à UCB!</div>
+                  <div class="ava-real-body">
+                    <div class="ava-real-main">
+                      <div class="ava-tabs">
+                        <span>Todos</span><span>2023/1</span><span>2023/2</span><span>2023/3</span><span>2024/1</span>
+                      </div>
+                      <div class="ava-course-grid">
+                        <div class="ava-course-card">
+                          <div class="ava-course-img"></div>
+                          <div class="ava-course-title">RELAÇÃO: PRINCÍPIOS E VALORES</div>
+                        </div>
+                        <div class="ava-course-card">
+                          <div class="ava-course-img"></div>
+                          <div class="ava-course-title">ENGENHARIA DE SOFTWARE</div>
+                        </div>
+                        <div class="ava-course-card">
+                          <div class="ava-course-img"></div>
+                          <div class="ava-course-title">MATEMÁTICA DISCRETA</div>
+                        </div>
+                        <div class="ava-course-card">
+                          <div class="ava-course-img"></div>
+                          <div class="ava-course-title">SISTEMAS COMPUTACIONAIS</div>
+                        </div>
+                        <div class="ava-course-card">
+                          <div class="ava-course-img"></div>
+                          <div class="ava-course-title">ALGORITMOS E PROGRAMAÇÃO</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ava-real-side">
+                      <div class="ava-side-box">Calendário</div>
+                      <div class="ava-side-box">Próximos eventos</div>
+                      <div class="ava-news">Biblioteca da UCB recebe exposição de aquarelas</div>
+                      <div class="ava-side-box tall"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="artifact-caption">Representação recriada a partir do print real, usada como evidência inicial
+                do diagnóstico.</div>
+            </div>
+            <div class="light-card">
+              <h3>Principais problemas identificados</h3>
+              <div class="finding-list">
+                <div class="finding">
+                  <div class="finding-icon">!</div>
+                  <div><strong>Excesso de informação</strong>
+                    <p>Muitos elementos disputavam atenção logo na entrada do AVA.</p>
+                  </div>
+                </div>
+                <div class="finding">
+                  <div class="finding-icon">!</div>
+                  <div><strong>Comunicação dispersa</strong>
+                    <p>Notícias institucionais competiam com conteúdos acadêmicos e tarefas.</p>
+                  </div>
+                </div>
+                <div class="finding">
+                  <div class="finding-icon">!</div>
+                  <div><strong>Navegação complexa</strong>
+                    <p>O aluno precisava explorar menus e cards para entender onde agir.</p>
+                  </div>
+                </div>
+                <div class="finding">
+                  <div class="finding-icon">!</div>
+                  <div><strong>Baixa visibilidade de progresso</strong>
+                    <p>O andamento das disciplinas não era apresentado como informação central.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="analysis-note">
+                <h3>Insight</h3>
+                <p>O AVA não precisava de mais informação. Precisava priorizar o que era essencial para a jornada de
+                  aprendizagem.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">03 · Pesquisa e imersão</span>
+              <h2>Entendendo a experiência do aluno antes de redesenhar telas.</h2>
+            </div>
+            <p>A análise considerou dúvidas recorrentes, padrões de navegação, dificuldades relatadas, pontos de fricção
+              e a forma como os usuários interpretavam a organização do ambiente.</p>
+          </div>
+          <div class="grid-3">
+            <div class="light-card">
+              <h3>Comportamento</h3>
+              <p>Como alunos acessavam disciplinas, conteúdos e atividades.</p>
+            </div>
+            <div class="light-card">
+              <h3>Dores recorrentes</h3>
+              <p>Onde surgiam dúvidas e dependência de suporte.</p>
+            </div>
+            <div class="light-card">
+              <h3>Estrutura</h3>
+              <p>Como a arquitetura do AVA influenciava autonomia e clareza.</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">04 · Jornada do usuário</span>
+              <h2>A dificuldade não estava no conteúdo, mas no acesso a ele.</h2>
+            </div>
+            <p>A jornada revelou um padrão de esforço desnecessário: o usuário precisava interpretar o sistema antes de
+              conseguir estudar, realizar atividades ou acompanhar seu progresso.</p>
+          </div>
+
+          <div class="journey">
+            <div class="light-card">
+              <div class="journey-step">01 · Entrada no AVA</div>
+              <h3>“Por onde eu começo?”</h3>
+              <p>Acessa a plataforma e tenta localizar disciplina ou atividade.</p>
+              <div class="emotion">😕 Confusão</div>
+              <p><strong>Dor:</strong> excesso de informação e falta de orientação.</p>
+              <div class="friction"><span class="bar on"></span><span class="bar on"></span><span
+                  class="bar on"></span><span class="bar"></span><span class="bar"></span></div>
+            </div>
+            <div class="light-card">
+              <div class="journey-step">02 · Busca por conteúdo</div>
+              <h3>“Isso deveria ser mais fácil.”</h3>
+              <p>Navega entre menus, abas e áreas diferentes.</p>
+              <div class="emotion">😣 Frustração</div>
+              <p><strong>Dor:</strong> conteúdos espalhados e nomenclaturas inconsistentes.</p>
+              <div class="friction"><span class="bar on"></span><span class="bar on"></span><span
+                  class="bar on"></span><span class="bar on"></span><span class="bar"></span></div>
+            </div>
+            <div class="light-card">
+              <div class="journey-step">03 · Disciplina</div>
+              <h3>“O que é prioridade?”</h3>
+              <p>Acessa materiais e tenta entender a sequência.</p>
+              <div class="emotion">😐 Insegurança</div>
+              <p><strong>Dor:</strong> falta de hierarquia e fluxo lógico.</p>
+              <div class="friction"><span class="bar on"></span><span class="bar on"></span><span
+                  class="bar on"></span><span class="bar"></span><span class="bar"></span></div>
+            </div>
+            <div class="light-card">
+              <div class="journey-step">04 · Atividades</div>
+              <h3>“Estou fazendo certo?”</h3>
+              <p>Busca instruções para realizar tarefas e avaliações.</p>
+              <div class="emotion">😟 Ansiedade</div>
+              <p><strong>Dor:</strong> ações pouco claras e difícil localização.</p>
+              <div class="friction"><span class="bar on"></span><span class="bar on"></span><span
+                  class="bar on"></span><span class="bar on"></span><span class="bar"></span></div>
+            </div>
+            <div class="light-card">
+              <div class="journey-step">05 · Suporte</div>
+              <h3>“Vou ter que pedir ajuda.”</h3>
+              <p>Procura orientação fora do fluxo principal.</p>
+              <div class="emotion">😤 Dependência</div>
+              <p><strong>Dor:</strong> baixa autonomia e repetição de dúvidas.</p>
+              <div class="friction"><span class="bar on"></span><span class="bar on"></span><span
+                  class="bar on"></span><span class="bar on"></span><span class="bar on"></span></div>
+            </div>
+            <div class="light-card">
+              <div class="journey-step">06 · Conclusão</div>
+              <h3>“Será que finalizei tudo?”</h3>
+              <p>Tenta acompanhar progresso e fechamento de tarefas.</p>
+              <div class="emotion">😕 Incerteza</div>
+              <p><strong>Dor:</strong> falta de feedback claro e visibilidade de progresso.</p>
+              <div class="friction"><span class="bar on"></span><span class="bar on"></span><span
+                  class="bar on"></span><span class="bar"></span><span class="bar"></span></div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">05 · Arquitetura da Informação</span>
+              <h2>O redesign reorganizou o sistema antes de redesenhar a interface.</h2>
+            </div>
+            <p>A solução partiu de uma revisão estrutural: reduzir dispersão, criar previsibilidade entre disciplinas e
+              separar conteúdo, atividades, avaliações e avisos.</p>
+          </div>
+
+          <div class="ia-map">
+            <div class="light-card">
+              <h3>Antes</h3>
+              <div class="tree">Home
+                ├── Disciplinas
+                │ ├── Disciplina A
+                │ │ ├── Conteúdos
+                │ │ ├── Atividades
+                │ │ ├── Avisos
+                │ │ ├── Materiais extras
+                │ │ └── Fórum
+                │ ├── Disciplina B
+                │ │ └── estrutura diferente
+                │
+                ├── Mensagens
+                ├── Notificações
+                ├── Calendário
+                ├── Arquivos
+                └── Outros</div>
+              <div class="badges"><span class="badge red">inconsistente</span><span
+                  class="badge red">disperso</span><span class="badge red">dependente de suporte</span></div>
+            </div>
+            <div class="light-card">
+              <h3>Depois</h3>
+              <div class="tree">Dashboard
+                ├── Minhas disciplinas
+                │ ├── Disciplina A
+                │ │ ├── Visão geral
+                │ │ ├── Conteúdo
+                │ │ │ ├── Módulo 1
+                │ │ │ ├── Módulo 2
+                │ │ │ └── Módulo 3
+                │ │ ├── Atividades
+                │ │ ├── Avaliações
+                │ │ ├── Materiais complementares
+                │ │ └── Avisos
+                │ └── todas seguem o mesmo padrão
+                │
+                ├── Agenda / Prazos
+                ├── Notificações
+                └── Perfil / Progresso</div>
+              <div class="badges"><span class="badge green">previsível</span><span
+                  class="badge green">estruturado</span><span class="badge green">autônomo</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">06 · Decisões de design</span>
+              <h2>Cada mudança precisava reduzir esforço cognitivo.</h2>
+            </div>
+            <p>O objetivo não era adicionar mais recursos, mas tornar o caminho mais evidente para alunos e professores.
+            </p>
+          </div>
+          <div class="decision-grid">
+            <div class="light-card"><strong>Decisão 01</strong>
+              <h3>Dashboard central</h3>
+              <p>Criação de um ponto único de entrada para reduzir dúvida inicial.</p>
+            </div>
+            <div class="light-card"><strong>Decisão 02</strong>
+              <h3>Disciplinas padronizadas</h3>
+              <p>Estrutura única para reduzir reaprendizado a cada disciplina.</p>
+            </div>
+            <div class="light-card"><strong>Decisão 03</strong>
+              <h3>Conteúdo por módulos</h3>
+              <p>Agrupamento baseado na progressão pedagógica.</p>
+            </div>
+            <div class="light-card"><strong>Decisão 04</strong>
+              <h3>Conteúdo ≠ ação</h3>
+              <p>Separação clara entre estudar, entregar atividade e acompanhar avaliação.</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">07 · Design em ação</span>
+              <h2>Antes e depois: da sala fragmentada para uma experiência orientada à ação.</h2>
+            </div>
+            <p>Com base no diagnóstico, a proposta reorganizou a tela da disciplina para dar mais visibilidade a
+              progresso, próximas atividades, avisos importantes e sequência de estudo.</p>
+          </div>
+
+          <div class="artifact-image">
+            <div class="product-artifact">
+              <div class="artifact-topline">
+                <div>
+                  <div class="artifact-kicker">Design em ação</div>
+                  <h3 class="artifact-title">Antes e Depois: Sala de Aula e Disciplinas</h3>
+                </div>
+                <p class="artifact-subtitle">Reestruturei a experiência do aluno para tornar o acesso ao conteúdo mais
+                  claro, organizado e centrado no aprendizado.</p>
+              </div>
+
+              <div class="product-comparison">
+                <div class="product-panel">
+                  <div class="panel-heading"><span class="status-pill red">✕ Antes</span><span
+                      class="panel-note">Experiência fragmentada e com baixa hierarquia visual</span></div>
+                  <div class="browser-shell">
+                    <div class="browser-top">
+                      <div class="browser-dots"><span></span><span></span><span></span></div>
+                      <div class="browser-icons"><span></span><span></span><span></span><span
+                          class="profile-mini"></span></div>
+                    </div>
+                    <div class="legacy-nav"><span>Início do Curso</span><span>Conteúdo</span><span>Sala de
+                        Aula</span><span>Biblioteca</span><span>Ajuda</span><span>Software</span></div>
+                    <div class="legacy-banner">ENGENHARIA DE SOFTWARE</div>
+                    <div class="legacy-body">
+                      <div class="legacy-card">
+                        <div class="legacy-tabs"><span>Selecionar
+                            visualização</span><span>Cards</span><span>Conteúdos</span></div>
+                        <div class="legacy-courses">
+                          <div class="legacy-course">
+                            <p>Fórum de Avisos</p>
+                          </div>
+                          <div class="legacy-course">
+                            <p>Plano de Aula</p>
+                          </div>
+                          <div class="legacy-course">
+                            <p>Atividades e Avaliações</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="legacy-side">
+                        <div class="legacy-side-box">Meu configurador</div>
+                        <div class="legacy-side-box">Calendário</div>
+                        <div class="legacy-side-box">Atividades de hoje</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="problem-callouts">
+                    <div class="problem-callout">
+                      <div class="problem-dot">!</div>
+                      <div><strong>Navegação pouco intuitiva</strong>
+                        <p>Muitos ícones e caminhos diferentes para ações sem prioridade clara.</p>
+                      </div>
+                    </div>
+                    <div class="problem-callout">
+                      <div class="problem-dot">!</div>
+                      <div><strong>Informações dispersas</strong>
+                        <p>Atividades, avisos e materiais competem entre si no mesmo nível visual.</p>
+                      </div>
+                    </div>
+                    <div class="problem-callout">
+                      <div class="problem-dot">!</div>
+                      <div><strong>Baixa visibilidade do progresso</strong>
+                        <p>O andamento das atividades não aparece como informação central.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="product-panel">
+                  <div class="panel-heading"><span class="status-pill green">✓ Depois</span><span
+                      class="panel-note">Experiência organizada, clara e centrada no aluno</span></div>
+                  <div class="modern-ui">
+                    <aside class="modern-sidebar">
+                      <div class="modern-logo">UCB | AVA</div>
+                      <div class="modern-nav"><span class="active">Início</span><span>Minhas
+                          disciplinas</span><span>Agenda</span><span>Atividades</span><span>Avaliações</span><span>Mensagens</span><span>Biblioteca</span><span>Suporte</span>
+                      </div>
+                    </aside>
+                    <div class="modern-content">
+                      <div class="modern-header">
+                        <div class="search-box">Buscar no AVA...</div>
+                        <div class="user-box">
+                          <div class="avatar">PC</div>
+                          <div>Pedro Lima<br><span style="font-weight:500;color:#64748B">Aluno</span></div>
+                        </div>
+                      </div>
+                      <div class="modern-title">
+                        <div>
+                          <h4>Engenharia de Software - GPE02N0436</h4>
+                          <p>Prof. João Silva · Em andamento</p>
+                        </div>
+                        <div class="progress-inline">
+                          <p style="margin:0;font-size:11px;color:#64748B">Seu progresso geral · 65%</p>
+                          <div class="progress-line">
+                            <div></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modern-tabs"><span>Visão
+                          geral</span><span>Conteúdo</span><span>Atividades</span><span>Avaliações</span><span>Avisos</span><span>Fórum</span><span>Material</span>
+                      </div>
+                      <div class="modern-grid">
+                        <div class="ux-card">
+                          <h5>Continue de onde parou</h5>
+                          <div class="continue-box">Atividades e Avaliações · Continuar</div>
+                        </div>
+                        <div class="ux-card">
+                          <h5>Próximas atividades</h5>
+                          <div class="task">
+                            <div class="task-icon"></div>
+                            <p>Entrega · Lista 2<br>Hoje, 23:59</p>
+                          </div>
+                          <div class="task">
+                            <div class="task-icon"></div>
+                            <p>Fórum · Discussão 3<br>Amanhã</p>
+                          </div>
+                        </div>
+                        <div class="ux-card">
+                          <h5>Avisos importantes</h5>
+                          <div class="task">
+                            <div class="task-icon"></div>
+                            <p>Biblioteca da UCB recebe exposição</p>
+                          </div>
+                          <div class="task">
+                            <div class="task-icon"></div>
+                            <p>Novo material complementar</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="summary-row">
+                        <div class="summary-mini"><strong>2</strong>Fóruns ativos</div>
+                        <div class="summary-mini"><strong>18</strong>Materiais</div>
+                        <div class="summary-mini"><strong>3</strong>Avaliações</div>
+                        <div class="summary-mini"><strong>5/15</strong>Atividades</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="artifact-decisions">
+                <div class="artifact-decision"><strong>Centralização</strong>
+                  <p>Reuni o essencial na visão geral da disciplina.</p>
+                </div>
+                <div class="artifact-decision"><strong>Hierarquia visual</strong>
+                  <p>Criei níveis claros para o aluno identificar prioridades.</p>
+                </div>
+                <div class="artifact-decision"><strong>Padronização</strong>
+                  <p>Estrutura consistente entre disciplinas.</p>
+                </div>
+                <div class="artifact-decision"><strong>Autonomia</strong>
+                  <p>Informações e ações mais acessíveis.</p>
+                </div>
+                <div class="artifact-decision"><strong>Progresso</strong>
+                  <p>Próximos passos visíveis no fluxo.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="artifact-caption">Protótipo recriado em HTML/CSS para demonstrar decisões estruturais de UX sem
+            depender do sistema original.</div>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <div><span class="eyebrow">08 · Síntese visual do redesign</span>
+              <h2>Uma visão consolidada da transformação proposta.</h2>
+            </div>
+            <p>Este artefato resume a evolução do AVA: diagnóstico do estado anterior, proposta de nova experiência,
+              arquitetura da informação redesenhada, decisões de design e impacto esperado.</p>
+          </div>
+          <div class="artifact-image">
+            <div class="product-artifact">
+              <div class="artifact-topline">
+                <div>
+                  <div class="artifact-kicker">Redesign do AVA UCB</div>
+                  <h3 class="artifact-title">Da sobrecarga à clareza operacional</h3>
+                </div>
+                <p class="artifact-subtitle">Síntese do diagnóstico, solução proposta, arquitetura da informação e
+                  impacto esperado.</p>
+              </div>
+              <div class="ia-diagram">
+                <div class="ia-box">
+                  <h4>Arquitetura antes</h4>
+                  <div class="tree-flow">
+                    <div class="node-row"><span class="node red">Página inicial</span><span
+                        class="node red">Disciplinas</span><span class="node red">Mensagens</span><span
+                        class="node red">Portais</span><span class="node red">Calendário</span><span
+                        class="node red">Arquivos</span><span class="node red">Avisos</span></div>
+                  </div>
+                  <p style="font-size:13px;margin:0;color:#64748B">Informações dispersas, muitos caminhos e baixa
+                    hierarquia.</p>
+                </div>
+                <div class="ia-box">
+                  <h4>Arquitetura depois</h4>
+                  <div class="tree-flow">
+                    <div class="node-row"><span class="node green">Dashboard</span><span class="node green">Minhas
+                        disciplinas</span><span class="node green">Agenda</span><span
+                        class="node green">Atividades</span><span class="node green">Mensagens</span><span
+                        class="node green">Biblioteca</span><span class="node green">Progresso</span></div>
+                  </div>
+                  <p style="font-size:13px;margin:0;color:#64748B">Fluxo linear, previsível e organizado por contexto.
+                  </p>
+                </div>
+              </div>
+              <div class="impact-strip">
+                <div>Redução de chamados</div>
+                <div>Aumento da autonomia</div>
+                <div>Melhor percepção de organização</div>
+                <div>Experiência mais fluida</div>
+              </div>
+            </div>
+          </div>
+          <div class="artifact-caption">Síntese visual recriada como protótipo em HTML/CSS para leitura rápida no
+            portfólio.</div>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <div><span class="eyebrow">09 · Impacto</span>
+              <h2>Menos esforço para encontrar. Mais foco em aprender.</h2>
+            </div>
+            <p>A intervenção buscou reduzir fricções recorrentes na navegação, aumentar a autonomia do aluno e tornar a
+              experiência mais clara, previsível e orientada às principais tarefas acadêmicas.</p>
+          </div>
+          <div class="grid-3 impact-light">
+            <div class="light-card">
+              <div class="number">↓</div>
+              <h3>Dúvidas recorrentes</h3>
+              <p>Redução da dependência de suporte para ações básicas de navegação.</p>
+            </div>
+            <div class="light-card">
+              <div class="number">↑</div>
+              <h3>Clareza</h3>
+              <p>Melhor entendimento da estrutura das disciplinas e próximos passos.</p>
+            </div>
+            <div class="light-card">
+              <div class="number">↑</div>
+              <h3>Autonomia</h3>
+              <p>Usuários conseguem localizar conteúdos e atividades com menos esforço.</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="quote-light"><span class="eyebrow">10 · Aprendizado-chave</span>
+            <h2>Melhorar a experiência não foi adicionar mais. Foi organizar melhor.</h2>
+            <p>Em produtos educacionais, clareza é funcionalidade. A arquitetura da informação pode ser tão decisiva
+              quanto a interface final.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+
+
+    <div class="page">
+
+
+
+
+      <section class="contact-footer" id="contato">
         <div>
-          <span class="eyebrow">Cases selecionados</span>
-          <h2>Três projetos, uma mesma lógica: reduzir complexidade.</h2>
+          <span class="eyebrow">Contato</span>
+          <h2>Vamos conversar?</h2>
+
         </div>
-        <p>Os cases abaixo mostram minha atuação em diferentes níveis: interface e arquitetura de informação, redesenho
-          de sistema organizacional e automação com IA aplicada a um gargalo real.</p>
-      </div>
 
-      <div class="case-grid">
-        <a class="case-card" href="ava.html">
-          <div class="case-thumb">
-            <div class="mock-window">
-              <div class="line big"></div>
-              <div class="mini-grid"><span></span><span></span><span></span></div>
-              <div class="line"></div>
-              <div class="line"></div>
-            </div>
-          </div>
-          <div class="case-body">
-            <div class="case-meta">Case 01 · Product Design · UCB</div>
-            <h3>Redesign do AVA da Universidade Católica de Brasília</h3>
-            <p>Reestruturação da experiência do ambiente virtual de aprendizagem para reduzir fricção, melhorar
-              navegação e aumentar autonomia do aluno.</p>
-            <div class="case-tags"><span>UX Research</span><span>IA</span><span>UI Design</span><span>EAD</span></div>
-            <div class="case-link">Abrir case →</div>
-          </div>
-        </a>
+        <div class="contact-links">
+          <a class="contact-link" href="https://www.linkedin.com/in/thalisxcruz" target="_blank" rel="noopener noreferrer">
+            <span class="contact-icon">in</span>
+            LinkedIn · thalisxcruz
+          </a>
 
-        <a class="case-card" href="fiocruz.html">
-          <div class="case-thumb fiocruz">
-            <div class="mock-window">
-              <div class="line"></div>
-              <div class="mini-grid"><span></span><span></span><span></span></div>
-              <div class="line big"></div>
-            </div>
-          </div>
-          <div class="case-body">
-            <div class="case-meta">Case 02 · Design Estratégico · Fiocruz</div>
-            <h3>ADDIE-UX: redesenhando a esteira de produção EAD</h3>
-            <p>Mapeamento e estruturação de um sistema complexo de produção educacional, conectando UX, DesignOps,
-              Design Instrucional e IA aplicada.</p>
-            <div class="case-tags"><span>Service Design</span><span>DesignOps</span><span>UX
-                Research</span><span>IA</span></div>
-            <div class="case-link">Abrir case →</div>
-          </div>
-        </a>
+          <a class="contact-link" href="tel:+5561983226212">
+            <span class="contact-icon">☎</span>
+            +55 61 9 8322-6212
+          </a>
 
-        <a class="case-card" href="d2l.html">
-          <div class="case-thumb d2l">
-            <div class="mock-window">
-              <div class="line"></div>
-              <div class="line big"></div>
-              <div class="line"></div>
-              <div class="line"></div>
-            </div>
-          </div>
-          <div class="case-body">
-            <div class="case-meta">Case 03 · IA aplicada · UCB</div>
-            <h3>Formatador D2L: de gargalo manual a agente especialista</h3>
-            <p>Criação colaborativa de um agente de IA para automatizar a formatação de bancos de questões, reduzindo
-              uma operação crítica de semanas para minutos.</p>
-            <div class="case-tags"><span>IA aplicada</span><span>Prompt
-                Engineering</span><span>D2L</span><span>Automação</span></div>
-            <div class="case-link">Abrir case →</div>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <section>
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">Minha abordagem</span>
-          <h2>Pesquisa primeiro. Estrutura depois. Interface por último.</h2>
+          <a class="contact-link" href="mailto:thalisxcruz@gmail.com">
+            <span class="contact-icon">@</span>
+            thalisxcruz@gmail.com
+          </a>
         </div>
-        <p>Meu trabalho parte da leitura do sistema: usuários, regras, fluxos, gargalos e decisões. A interface é
-          consequência de uma estrutura clara — não o ponto de partida.</p>
-      </div>
-      <div class="principles">
-        <div class="principle"><strong>01 · Diagnóstico</strong>
-          <p>Entender a experiência real, seja do aluno, do colaborador ou da equipe que opera o processo.</p>
-        </div>
-        <div class="principle"><strong>02 · Estrutura</strong>
-          <p>Organizar informação, fluxos e decisões antes de propor qualquer camada visual ou tecnológica.</p>
-        </div>
-        <div class="principle"><strong>03 · Escala</strong>
-          <p>Usar design e IA para reduzir esforço, aumentar clareza e tornar sistemas mais sustentáveis.</p>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section>
-      <div class="about-strip">
-        <div class="portrait">
-          <img src="perfil.png" alt="Foto de Thalisson Cruz" />
-        </div>
-        <div class="about-card">
-          <span class="eyebrow">Sobre mim</span>
-          <h2>Construindo clareza em sistemas complexos.</h2>
-          <p>Sou Thalisson Cruz, UX/Product Designer com experiência em educação digital, arquitetura da informação,
-            interfaces e IA aplicada a processos. Atuo na interseção entre experiência do usuário, operação e
-            tecnologia.</p>
-          <p>Meu foco é transformar ambientes complexos em sistemas mais claros, utilizáveis e escaláveis — sempre
-            conectando contexto, pesquisa e decisão de design.</p>
-          <a href="sobre.html" class="btn secondary">Ler sobre mim</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact-footer" id="contato">
-      <div>
-        <span class="eyebrow">Contato</span>
-        <h2>Vamos conversar?</h2>
-
-      </div>
-
-      <div class="contact-links">
-        <a class="contact-link" href="https://www.linkedin.com/in/thalisxcruz" target="_blank"
-          rel="noopener noreferrer">
-          <span class="contact-icon">in</span>
-          LinkedIn · thalisxcruz
-        </a>
-
-        <a class="contact-link" href="tel:+5561983226212">
-          <span class="contact-icon">☎</span>
-          +55 61 9 8322-6212
-        </a>
-
-        <a class="contact-link" href="mailto:thalisxcruz@gmail.com">
-          <span class="contact-icon">@</span>
-          thalisxcruz@gmail.com
-        </a>
-      </div>
-    </section>
-
-    <footer>
-      <span>Thalisson Cruz · UX/Product Designer</span>
-      <span>© 2026</span>
-    </footer>
-  </div>
+      <footer>
+        <span>Thalisson Cruz · UX/Product Designer</span>
+        <span>© 2026</span>
+      </footer>
+    </div>
 </body>
 
 </html>
